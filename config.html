@@ -1,0 +1,17 @@
+
+<script>
+
+	(function () {
+		var glob = window;
+		var Aquamade = glob.Aquamade = {};
+		
+		Aquamade.config = {
+			base: "/Team:HFLS_H2Z_Hangzhou"
+		};
+
+		Aquamade.url = function (path) {
+			return Aquamade.config.base + "/" + path;
+		};
+	})();
+
+</script>

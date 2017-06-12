@@ -1,0 +1,57 @@
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+		<link rel="stylesheet" type="text/css" href="/Template:HFLS_H2Z_Hangzhou/css/main?action=raw&ctype=text/css">
+		<link rel="stylesheet" type="text/css" href="/Template:HFLS_H2Z_Hangzhou/font/brandon/import?action=raw&ctype=text/css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+
+		<script src="/Template:HFLS_H2Z_Hangzhou/js/jquery?action=raw&ctype=text/javascript"></script>
+		<script src="/Template:HFLS_H2Z_Hangzhou/js/modernizr?action=raw&ctype=text/javascript"></script>
+		<script src="/Template:HFLS_H2Z_Hangzhou/js/vcent?action=raw&ctype=text/javascript"></script>
+	</head>
+
+	<!-- REMOVE this two tag in production -->
+	<script>
+		if (!window.Aquamade) {
+			window.Aquamade = {};
+			window.Aquamade.url = function (url) { return url; };
+		}
+	</script>
+
+	<script>
+		$(document).ready(function () {
+			// alert(Modernizr.csstransforms3d);
+			// if (Modernizr.csstransforms3d) {
+			// }
+			$(".main.cont-wrap").click(function () {
+				$(".main.view").toggleClass("open-menu");
+				setTimeout(function () {
+					$(".main.menu").width($(".main.cont-wrap").position().left);
+				}, 300);
+			});
+
+			$("#sideMenu").remove();
+		});
+	</script>
+
+	<div class="main view">
+		<div class="main menu">
+			<div class="items vcenter">
+				<div class="logo"><i class="fa fa-codepen"></i></div>
+				<div class="item">HOME</div>
+				<div class="item">TEAM</div>
+				<div class="item">PARTS</div>
+				<div class="item">HUMAN PRACTICES</div>
+			</div>
+		</div>
+
+		<div class="main cont-wrap">
+
+	<!-- Concat with content -->
+
+</html>
+

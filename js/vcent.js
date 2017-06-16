@@ -39,4 +39,6 @@
 	$(window)
 		.on("load", vcent.update)
 		.on("resize", vcent.update);
+
+	setInterval(vcent.update, 50);
 })();

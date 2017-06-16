@@ -1,52 +1,117 @@
 <html>
-
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta http-equiv="Pragma" content="no-cache">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-		<link rel="stylesheet" type="text/css" href="/Template:HFLS_H2Z_Hangzhou/css/main?action=raw&ctype=text/css">
-		<link rel="stylesheet" type="text/css" href="/Template:HFLS_H2Z_Hangzhou/font/brandon/import?action=raw&ctype=text/css">
-		<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/com.css">
+		<link rel="stylesheet" type="text/css" href="font/brandon/import.css">
+		<link rel="stylesheet" type="text/css" href="font/veneer/import.css">
 
-		<script src="/Template:HFLS_H2Z_Hangzhou/js/jquery?action=raw&ctype=text/javascript"></script>
-		<script src="/Template:HFLS_H2Z_Hangzhou/js/modernizr?action=raw&ctype=text/javascript"></script>
-		<script src="/Template:HFLS_H2Z_Hangzhou/js/vcent?action=raw&ctype=text/javascript"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/modernizr.js"></script>
+		<script src="js/vcent.js"></script>
+
+		<!-- porbably need to change these to static files -->
+		<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/semantic-ui/2.2.10/semantic.min.css">
+		<script src="https://cdn.bootcss.com/semantic-ui/2.2.10/semantic.min.js"></script>
 	</head>
 
-	<!-- REMOVE this two tag in production -->
 	<script>
-		if (!window.Aquamade) {
-			window.Aquamade = {};
-			window.Aquamade.url = function (url) { return url; };
-		}
-	</script>
+		window.ADEBUG = true;
 
-	<script>
 		$(document).ready(function () {
 			// alert(Modernizr.csstransforms3d);
 			// if (Modernizr.csstransforms3d) {
 			// }
-			$(".main.cont-wrap").click(function () {
-				$(".main.view").toggleClass("open-menu");
+
+			var glob = window;
+
+			function setMenuPos() {
 				setTimeout(function () {
 					$(".main.menu").width($(".main.cont-wrap").position().left);
 				}, 300);
-			});
+			}
 
+			var open = false;
+
+			function toggleMenu() {
+				$(".main.view").toggleClass("open-menu");
+				setMenuPos();
+
+				if ($(".main.view").hasClass("open-menu"))
+					setTimeout(function () {
+						$(".main.cont-wrap").click(closeMenu);
+					});
+			}
+
+			function closeMenu() {
+				$(".main.view").removeClass("open-menu");
+				$(".main.cont-wrap").off("click", closeMenu);
+			}
+
+			$(".main.menu-btn")
+				.click(toggleMenu)
+				.popup({
+					content: "Menu",
+					position: "right center",
+					on: "manual"
+				}).popup("show");
+
+			setTimeout(function () {
+				$(".main.menu-btn").popup("hide");
+			}, 3000);
+
+			// remove some weird components
 			$("#sideMenu").remove();
+			$("#top_menu_14").remove();
+
+			glob.Aquamade = {};
+			glob.Aquamade.menu = {
+				setBtnColor: function (color) {
+					$(".main.menu-btn").css("color", color);
+				},
+
+				selectItem: function (name) {
+					$(".main.menu .selected").removeClass("selected");
+					$(".main.menu .item.item-" + name).addClass("selected");
+				}
+			};
 		});
+	</script>
+
+	<script>
+		/* just for debug */
+		if (ADEBUG) {
+			$(document).ready(function () {
+				$.ajax({
+					url: "sub/home.html",
+					success: function (dat) {
+						$(".main.cont-wrap").append(dat);
+					}
+				});		
+			});
+		}
 	</script>
 
 	<div class="main view">
 		<div class="main menu">
 			<div class="items vcenter">
-				<div class="logo"><i class="fa fa-codepen"></i></div>
-				<div class="item">HOME</div>
-				<div class="item">TEAM</div>
-				<div class="item">PARTS</div>
-				<div class="item">HUMAN PRACTICES</div>
+				<div class="logo"><i class="fa fa-bath"></i></div><br>
+				<div class="item item-home">HOME</div><br>
+				<div class="item item-project">PROJECT</div><br>
+				<div class="item item-parts">PARTS</div><br>
+				<div class="item item-model">MODELLING</div><br>
+				<div class="item item-hprac">HUMAN PRACTICES</div><br>
+				<div class="item item-team">TEAM</div><br>
 			</div>
+		</div>
+
+		<div class="main top-btn-set">
+			<div class="main btn menu-btn"><i class="fa fa-bars"></i></div
+			><div class="main btn info-btn show-on-menu"><i class="fa fa-question-circle"></i></div>
 		</div>
 
 		<div class="main cont-wrap">

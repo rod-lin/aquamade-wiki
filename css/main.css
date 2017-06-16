@@ -9,7 +9,7 @@ html {
 
 	font-size: 1rem;
 
-	z-index: 99999;
+	font-family: Brandon;
 
 	background: rgba(24, 24, 24, 1);
 
@@ -28,7 +28,9 @@ html {
 	opacity: 0;
 
 	text-align: center;
-	font-family: Brandon;
+
+	user-select: none;
+	-moz-user-select: none;
 
 	transition: opacity 0.3s;
 }
@@ -45,6 +47,8 @@ html {
 	line-height: 7em;
 	text-align: center;
 
+	margin-bottom: 1rem;
+
 	border-radius: 50%;
 
 	background: white;
@@ -56,6 +60,12 @@ html {
 }
 
 .main.menu .item {
+	display: inline-block;
+
+	width: auto;
+
+	padding: 0 0.5rem;
+
 	font-weight: bold;
 	font-size: 1em;
 
@@ -66,11 +76,16 @@ html {
 			user-select: none;
 
 	cursor: pointer;
-	transition: font-size 0.2s;
+
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+
+	transition: border 0.2s;
 }
 
+.main.menu .item.selected,
 .main.menu .item:hover {
-	font-size: 1.1em;
+	border-left-color: #2980B9;
 }
 
 .main.view.open-menu .main.menu {
@@ -90,13 +105,67 @@ html {
 	transition: 0.3s cubic-bezier(0.2, 1, 0.2, 1);
 }
 
-.no-csstransforms3d .main.view.open-menu .main.cont-wrap {
-	left: 10em;
+.main.view.open-menu .main.cont-wrap {
+	overflow: hidden;
 }
 
+.main.view.open-menu .main.cont-wrap {
+	left: 18em;
+}
+
+.main.top-btn-set {
+	position: fixed;
+
+	z-index: 10;
+
+	left: 0.2rem;
+	top: 1.2rem;
+
+	font-size: 1.5rem;
+
+	color: black;
+
+	opacity: 0.8;
+
+	user-select: none;
+	-moz-user-select: none;
+
+	transition: opacity 0.2s;
+}
+
+.main.top-btn-set .btn {
+	display: inline-block;
+	margin-left: 1rem;
+	cursor: pointer;
+
+	transition: opacity 0.2s;
+}
+
+.main.top-btn-set .show-on-menu.btn {
+	opacity: 0;
+	pointer-events: none;
+}
+
+/* menu open! */
+.main.open-menu .main.top-btn-set {
+	color: white;
+	opacity: 1;
+}
+
+.main.open-menu .main.top-btn-set .show-on-menu.btn {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.main.open-menu .menu-btn .fa:before {
+	content: "\f00d";
+}
+
+/*
 .csstransforms3d .main.view.open-menu .main.cont-wrap {
 	-webkit-transform: translate3d(10em, 0, -200px);
 			transform: translate3d(10em, 0, -200px);
 
 	border-radius: 3px;
 }
+*/

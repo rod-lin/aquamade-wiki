@@ -1,0 +1,23 @@
+{
+  "name": "aquamade",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rod-lin/aquamade-wiki.git"
+  },
+  "author": "rodlin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rod-lin/aquamade-wiki/issues"
+  },
+  "homepage": "https://github.com/rod-lin/aquamade-wiki#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}

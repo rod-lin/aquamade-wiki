@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -42,7 +43,7 @@
 }
 
 .main.menu .items {
-	margin-top: -10em;
+	margin-top: 6rem;
 }
 
 .main.menu .logo {
@@ -53,7 +54,7 @@
 	line-height: 7em;
 	text-align: center;
 
-	margin-bottom: 1rem;
+	margin-bottom: 2rem;
 
 	border-radius: 50%;
 
@@ -92,6 +93,42 @@
 .main.menu .item.selected,
 .main.menu .item:hover {
 	border-left-color: #2980B9;
+}
+
+.main.menu .sub-items {
+	display: inline-block;
+
+	margin-top: 0.3rem;
+	
+	height: 0;
+	overflow: hidden;
+
+	transition: height 0.3s;
+}
+
+.main.menu .item:hover .sub-items {
+	height: auto;
+}
+
+.main.menu .sub-item {
+	display: inline-block;
+
+	margin-top: 0.7rem;
+
+	font-weight: bold;
+	font-size: 0.9rem;
+
+	padding: 0 0.5rem;
+
+	color: rgba(240, 240, 240, 1);
+
+	border-right: 3px solid transparent;
+	border-left: 3px solid transparent;
+
+	transition: border 0.2s;
+}
+
+.main.menu .sub-item:hover {
 }
 
 .main.view.open-menu .main.menu {
@@ -280,6 +317,12 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 		<script src="https://cdn.bootcss.com/semantic-ui/2.2.10/semantic.min.js"></script>
 	</head>
 
+	<style>
+		#top_menu_14:hover {
+			top: 0 !important;
+		}
+	</style>
+
 	<script>
 		window.ADEBUG = true;
 
@@ -327,7 +370,28 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 
 			// remove some weird components
 			$("#sideMenu").remove();
-			$("#top_menu_14").remove();
+
+			$("#top_menu_14").css({
+				top: "-20px",
+				"padding-bottom": "1rem",
+				transition: "top 0.3s"
+			});
+
+			var menu_trig = $("<div></div>");
+			menu_trig.css({
+				position: "fixed",
+				"z-index": "10",
+				height: "15px",
+				width: "100%",
+				top: "0",
+				left: "0"
+			}).mouseenter(function () {
+				$("#top_menu_14").css("top", "0");
+			}).mouseleave(function () {
+				$("#top_menu_14").css("top", "-20px");
+			});
+			
+			$("body").append(menu_trig);
 
 			glob.Aquamade = {};
 			glob.Aquamade.menu = {
@@ -359,14 +423,23 @@ null==d?void 0:d))},attrHooks:{type:{set:function(a,b){if(!o.radioValue&&"radio"
 
 	<div class="main view">
 		<div class="main menu">
-			<div class="items vcenter">
+			<div class="items">
 				<div class="logo"><i class="fa fa-bath"></i></div><br>
-				<div class="item item-home">HOME</div><br>
-				<div class="item item-project">PROJECT</div><br>
-				<div class="item item-parts">PARTS</div><br>
-				<div class="item item-model">MODELLING</div><br>
-				<div class="item item-hprac">HUMAN PRACTICES</div><br>
-				<div class="item item-team">TEAM</div><br>
+				<div style="text-align: center; display: inline-block; width: auto;">
+					<div class="item item-home">HOME</div><br>
+					<div class="item item-project">
+						PROJECT<!-- <br>
+						<div class="sub-items">
+							<div class="sub-item">OVERVIEW</div><br>
+							<div class="sub-item">RESULTS</div><br>
+							<div class="sub-item">PROFF</div>
+						</div> -->
+					</div><br>
+					<div class="item item-parts">PARTS</div><br>
+					<div class="item item-model">MODELLING</div><br>
+					<div class="item item-hprac">HUMAN PRACTICES</div><br>
+					<div class="item item-team">TEAM</div><br>
+				</div>
 			</div>
 		</div>
 

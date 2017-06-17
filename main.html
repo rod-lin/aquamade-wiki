@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -18,6 +19,12 @@
 		<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/semantic-ui/2.2.10/semantic.min.css">
 		<script src="https://cdn.bootcss.com/semantic-ui/2.2.10/semantic.min.js"></script>
 	</head>
+
+	<style>
+		#top_menu_14:hover {
+			top: 0 !important;
+		}
+	</style>
 
 	<script>
 		window.ADEBUG = true;
@@ -66,7 +73,28 @@
 
 			// remove some weird components
 			$("#sideMenu").remove();
-			$("#top_menu_14").remove();
+
+			$("#top_menu_14").css({
+				top: "-20px",
+				"padding-bottom": "1rem",
+				transition: "top 0.3s"
+			});
+
+			var menu_trig = $("<div></div>");
+			menu_trig.css({
+				position: "fixed",
+				"z-index": "10",
+				height: "15px",
+				width: "100%",
+				top: "0",
+				left: "0"
+			}).mouseenter(function () {
+				$("#top_menu_14").css("top", "0");
+			}).mouseleave(function () {
+				$("#top_menu_14").css("top", "-20px");
+			});
+			
+			$("body").append(menu_trig);
 
 			glob.Aquamade = {};
 			glob.Aquamade.menu = {
@@ -98,14 +126,23 @@
 
 	<div class="main view">
 		<div class="main menu">
-			<div class="items vcenter">
+			<div class="items">
 				<div class="logo"><i class="fa fa-bath"></i></div><br>
-				<div class="item item-home">HOME</div><br>
-				<div class="item item-project">PROJECT</div><br>
-				<div class="item item-parts">PARTS</div><br>
-				<div class="item item-model">MODELLING</div><br>
-				<div class="item item-hprac">HUMAN PRACTICES</div><br>
-				<div class="item item-team">TEAM</div><br>
+				<div style="text-align: center; display: inline-block; width: auto;">
+					<div class="item item-home">HOME</div><br>
+					<div class="item item-project">
+						PROJECT<!-- <br>
+						<div class="sub-items">
+							<div class="sub-item">OVERVIEW</div><br>
+							<div class="sub-item">RESULTS</div><br>
+							<div class="sub-item">PROFF</div>
+						</div> -->
+					</div><br>
+					<div class="item item-parts">PARTS</div><br>
+					<div class="item item-model">MODELLING</div><br>
+					<div class="item item-hprac">HUMAN PRACTICES</div><br>
+					<div class="item item-team">TEAM</div><br>
+				</div>
 			</div>
 		</div>
 

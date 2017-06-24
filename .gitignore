@@ -3,3 +3,5 @@ upload.log
 *.nt
 
 node_modules/
+
+__pycache__/

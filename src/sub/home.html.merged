@@ -1,0 +1,130 @@
+<html>
+	<head>
+		<script src='/Template:HFLS_H2Z_Hangzhou/src/sub/home/js?action=raw&ctype=text/javascript'></script>
+	</head>
+
+	<style>
+		.page-home {
+			font-family: Veneer;
+		}
+		
+		.page-home .block {
+			padding: 7rem;
+			text-align: center;
+		}
+
+		.page-home .pad {
+			padding: 2rem;
+		}
+
+		.page-home .no-pad {
+			padding: 0;
+		}
+
+		.page-home .title {
+			padding: 2rem 0;
+			font-size: 3rem;
+			text-align: center;
+		}
+
+		.page-home .member {
+			display: inline-block;
+			margin: 1rem;
+			width: 15rem;
+		}
+
+		.page-home .member .img {
+			height: 15rem;
+		}
+
+		.page-home .main-title {
+			font-size: 9rem;
+			text-align: center;
+		}
+
+		.page-home .blue {
+			color: #3498DB;
+		}
+
+		.page-home .article {
+			display: inline-block;
+
+			text-align: left;
+
+			max-width: 50rem;
+			line-height: 1.2;
+
+			color: rgba(80, 80, 80, 1);
+
+			font-size: 1.5rem;
+			font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+		}
+
+		.page-home .isocity {
+			position: absolute;
+			top: 0; left: 0;
+			opacity: 0.3;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+
+	<div class="page-home">
+		<div class="main-block fullscr no-pad block main-title">
+			<div class="isocity"></div>
+			<div class="main-effect"></div>
+			<div class="vcenter">
+				<span>A<span class="blue">q</span>uamade</span>
+			</div>
+		</div>
+		<div class="block">
+			<div class="title">What do we do</div>
+			<div class="article">
+			Physijs brings a very easy to use interface to the three.js framework. One of the reasons three.js is so popular is because it is so incredibly easy for graphics newbies to get into 3D programming. Physijs takes that philosophy to heart and makes physics simulations just as easy to run. In fact, there are just five easy steps that must be taken to make a 3D scene come alive.
+			<br><br>
+			How does Physijs work?
+			<br><br>
+			Physijs is built on top of ammo.js (although there is also a cannon.js branch) and runs the physics simulation in a separate thread (via web worker) to avoid impacting in your application's performance and taking up your 3D rendering time.
+			<br><br>
+			A lot of effort has been made to keep the style of code the same when using Physijs. Apart from updating an object's position, all of the normal three.js conventions remain the same. If you are used to three.js, you already know how to use the Physijs plugin.
+		</div>
+		</div>
+		<div class="block" style="background: rgba(250, 250, 250, 1);">
+			<div class="title">Members</div>
+			<div class="pad member-box" style="text-align: center;"></div>
+		</div>
+	</div>
+
+	<script>
+		$(".page-home").ready(function () {
+			Aquamade.menu.selectItem("home");
+
+			var main = $(this);
+
+			var iso = Isocity(main.find(".isocity"));
+
+			setTimeout(iso.gen, 0);
+
+			function genMember(pic, name, descr) {
+				var mem = $('<div class="ui card member"> \
+					<div class="image"> \
+						<div class="img" style="background-image: url(\'' + pic + '\');"></div> \
+					</div> \
+					<div class="content"> \
+						<div class="header">' + name + '</div> \
+						<div class="meta"> \
+							<a>' + descr + '</a> \
+						</div> \
+					</div> \
+				</div>');
+
+				return mem;
+			}
+
+			main.find(".member-box").append(genMember("/img/elliot.jpg", "Canal", "Beautiful"));
+			main.find(".member-box").append(genMember("/img/matt.jpg", "Sam", "Gorgeous"));
+			main.find(".member-box").append(genMember("/img/stevie.jpg", "Daniel", "Cool"));
+		});
+
+	</script>
+</html>

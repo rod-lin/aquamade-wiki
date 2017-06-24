@@ -36,77 +36,86 @@
 
 			var glob = window;
 
-			function setMenuPos() {
-				setTimeout(function () {
-					$(".main.menu").width($(".main.cont-wrap").position().left);
-				}, 300);
-			}
-
-			var open = false;
-
-			function toggleMenu() {
-				$(".main.view").toggleClass("open-menu");
-				setMenuPos();
-
-				if ($(".main.view").hasClass("open-menu"))
-					setTimeout(function () {
-						$(".main.cont-wrap").click(closeMenu);
-					});
-			}
-
-			function closeMenu() {
-				$(".main.view").removeClass("open-menu");
-				$(".main.cont-wrap").off("click", closeMenu);
-			}
-
-			$(".main.menu-btn")
-				.click(toggleMenu)
-				.popup({
-					content: "Menu",
-					position: "right center",
-					on: "manual"
-				}).popup("show");
-
-			setTimeout(function () {
-				$(".main.menu-btn").popup("hide");
-			}, 3000);
-
 			// remove some weird components
-			$("#sideMenu").remove();
+			(function () {
+				$("#sideMenu").remove();
 
-			$("#top_menu_14").css({
-				top: "-20px",
-				"padding-bottom": "1rem",
-				transition: "top 0.3s"
-			});
+				$("#top_menu_14").css({
+					top: "-20px",
+					"padding-bottom": "1rem",
+					transition: "top 0.3s"
+				});
 
-			var menu_trig = $("<div></div>");
-			menu_trig.css({
-				position: "fixed",
-				"z-index": "10",
-				height: "15px",
-				width: "100%",
-				top: "0",
-				left: "0"
-			}).mouseenter(function () {
-				$("#top_menu_14").css("top", "0");
-			}).mouseleave(function () {
-				$("#top_menu_14").css("top", "-20px");
-			});
-			
-			$("body").append(menu_trig);
+				var menu_trig = $("<div></div>");
+				menu_trig.css({
+					position: "fixed",
+					"z-index": "10",
+					height: "15px",
+					width: "100%",
+					top: "0",
+					left: "0"
+				}).mouseenter(function () {
+					$("#top_menu_14").css("top", "0");
+				}).mouseleave(function () {
+					$("#top_menu_14").css("top", "-20px");
+				});
+				
+				$("body").append(menu_trig);
+			})(); // hide the top bar
 
-			glob.Aquamade = {};
-			glob.Aquamade.menu = {
-				setBtnColor: function (color) {
-					$(".main.menu-btn").css("color", color);
-				},
-
-				selectItem: function (name) {
-					$(".main.menu .selected").removeClass("selected");
-					$(".main.menu .item.item-" + name).addClass("selected");
+			// menu
+			(function () {
+				function setMenuPos() {
+					setTimeout(function () {
+						$(".main.menu").width($(".main.cont-wrap").position().left);
+					}, 300);
 				}
-			};
+
+				var open = false;
+
+				function toggleMenu() {
+					$(".main.view").toggleClass("open-menu");
+					setMenuPos();
+
+					if ($(".main.view").hasClass("open-menu"))
+						setTimeout(function () {
+							$(".main.cont-wrap").click(closeMenu);
+						});
+				}
+
+				function closeMenu() {
+					$(".main.view").removeClass("open-menu");
+					$(".main.cont-wrap").off("click", closeMenu);
+				}
+
+				$(".main.menu-btn")
+					.click(toggleMenu)
+					.popup({
+						content: "Menu",
+						position: "right center",
+						on: "manual"
+					}).popup("show");
+
+				setTimeout(function () {
+					$(".main.menu-btn").popup("hide");
+				}, 3000);
+
+				glob.Aquamade = {};
+				glob.Aquamade.menu = {
+					setBtnColor: function (color) {
+						$(".main.menu-btn").css("color", color);
+					},
+
+					selectItem: function (name) {
+						$(".main.menu .selected").removeClass("selected");
+						$(".main.menu .item.item-" + name).addClass("selected");
+					},
+
+					toggle: function () {
+						toggleMenu();
+					}
+				};
+			})();
 		});
 	</script>
 
@@ -129,19 +138,34 @@
 			<div class="items">
 				<div class="logo"><i class="fa fa-bath"></i></div><br>
 				<div style="text-align: center; display: inline-block; width: auto;">
-					<div class="item item-home">HOME</div><br>
+					<div class="item item-home">
+						<a href="/Team:HFLS_H2Z_Hangzhou">HOME</a>
+					</div><br>
+					
 					<div class="item item-project">
-						PROJECT<!-- <br>
+						<a href="/Team:HFLS_H2Z_Hangzhou/project">PROJECT</a><!-- <br>
 						<div class="sub-items">
 							<div class="sub-item">OVERVIEW</div><br>
 							<div class="sub-item">RESULTS</div><br>
 							<div class="sub-item">PROFF</div>
 						</div> -->
 					</div><br>
-					<div class="item item-parts">PARTS</div><br>
-					<div class="item item-model">MODELLING</div><br>
-					<div class="item item-hprac">HUMAN PRACTICES</div><br>
-					<div class="item item-team">TEAM</div><br>
+					
+					<div class="item item-parts">
+						<a href="/Team:HFLS_H2Z_Hangzhou/parts">PARTS</a>
+					</div><br>
+					
+					<div class="item item-model">
+						<a href="/Team:HFLS_H2Z_Hangzhou/model">MODELLING</a>
+					</div><br>
+					
+					<div class="item item-hprac">
+						<a href="/Team:HFLS_H2Z_Hangzhou/hp">HUMAN PRACTICES</a>
+					</div><br>
+					
+					<div class="item item-team">
+						<a href="/Team:HFLS_H2Z_Hangzhou/team">TEAM</a>
+					</div><br>
 				</div>
 			</div>
 		</div>

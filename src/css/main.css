@@ -2,6 +2,14 @@ html {
 	overflow: hidden;
 }
 
+a {
+	color: inherit !important;
+}
+
+a:hover {
+	color: inherit !important;
+}
+
 .main.view {
 	position: fixed;
 	top: 0; left: 0;

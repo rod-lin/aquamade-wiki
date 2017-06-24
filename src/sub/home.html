@@ -73,8 +73,9 @@
 		<div class="main-block fullscr no-pad block main-title">
 			<div class="isocity"></div>
 			<div class="main-effect"></div>
-			<div class="vcenter">
-				<span>A<span class="blue">q</span>uamade</span>
+			<div class="vcenter" style="line-height: 1;">
+				<span>Hangzhou</span><br>
+				<span>HFLS<span class="blue">&amp;</span>H2Z</span>
 			</div>
 		</div>
 		<div class="block">
@@ -89,9 +90,13 @@
 			A lot of effort has been made to keep the style of code the same when using Physijs. Apart from updating an object's position, all of the normal three.js conventions remain the same. If you are used to three.js, you already know how to use the Physijs plugin.
 		</div>
 		</div>
-		<div class="block" style="background: rgba(250, 250, 250, 1);">
+		<!-- <div class="block" style="background: rgba(250, 250, 250, 1);">
 			<div class="title">Members</div>
 			<div class="pad member-box" style="text-align: center;"></div>
+		</div> -->
+		<div class="block" style="background: rgba(250, 250, 250, 1);">
+			<!-- <button class="ui black button learn-more-btn" style="height: 5rem; width: 15rem; font-size: 1.5rem;">Learn more</button> -->
+			<div style="font-size: 300%;">More coming soon</div>
 		</div>
 	</div>
 
@@ -102,7 +107,6 @@
 			var main = $(this);
 
 			var iso = Isocity(main.find(".isocity"));
-
 			setTimeout(iso.gen, 0);
 
 			function genMember(pic, name, descr) {
@@ -121,9 +125,13 @@
 				return mem;
 			}
 
-			main.find(".member-box").append(genMember("/img/elliot.jpg", "Canal", "Beautiful"));
-			main.find(".member-box").append(genMember("/img/matt.jpg", "Sam", "Gorgeous"));
-			main.find(".member-box").append(genMember("/img/stevie.jpg", "Daniel", "Cool"));
+			main.find(".learn-more-btn").click(function () {
+				Aquamade.menu.toggle();
+			});
+
+			// main.find(".member-box").append(genMember("/img/elliot.jpg", "Canal", "Beautiful"));
+			// main.find(".member-box").append(genMember("/img/matt.jpg", "Sam", "Gorgeous"));
+			// main.find(".member-box").append(genMember("/img/stevie.jpg", "Daniel", "Cool"));
 		});
 
 	</script>

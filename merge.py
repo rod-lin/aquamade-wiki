@@ -7,9 +7,9 @@ import os
 
 import upload
 
-# upload.upload("Template:HFLS_H2Z_Hangzhou/js", "attack!attack!")
+import config
 
-AQ_ABS_BASE = "src"
+# upload.upload("Template:HFLS_H2Z_Hangzhou/test_upload", "attack!attack!")
 
 def expand(path):
 	file = open(path)
@@ -23,7 +23,7 @@ def expand(path):
 
 	base = os.path.dirname(path)
 	file_name = path[len(base) + 1:].split(".")[0]
-	abs_base = AQ_ABS_BASE
+	abs_base = config.ABS_BASE
 
 	def rep_css(m):
 		tag = m.group(0)
@@ -46,16 +46,6 @@ def expand(path):
 	alljs = ""
 	jsurl = ""
 	has_ins = 0
-
-	def encpath(path):
-		com = re.split(r"/|.", path)
-		loc = "/".join(com)
-
-		if com[-1] == "js":
-			return "Template:HFLS_H2Z_Hangzhou/" + loc
-		else:
-			return "Team:HFLS_H2Z_Hangzhou/" + loc
-
 
 	def rep_js(m):
 		nonlocal alljs
@@ -81,7 +71,7 @@ def expand(path):
 						return "" # delete the original script
 					else:
 						has_ins = 1
-						jsurl = "Template:HFLS_H2Z_Hangzhou/" + base + "/" + file_name + "/js"
+						jsurl = "Template:" + config.TEAM_NAME + "/" + base + "/" + file_name + "/js"
 						return "<script src='/" + jsurl + "?action=raw&ctype=text/javascript'></script>"
 
 		return tag
@@ -91,14 +81,26 @@ def expand(path):
 
 	# print(cont)
 
-	return (cont, alljs, jsurl)
+	return ("{{Template:" + config.TEAM_NAME + "}}" + cont, alljs, jsurl)
 
 if len(sys.argv) >= 2:
+	print("merging...", end = "")
 	(res, alljs, jsurl) = expand(sys.argv[1])
-	
+	print("finished")
+
+	print("writing result...", end = "")
 	with open(sys.argv[1] + ".merged", "w") as output:
 		output.write(res)
+	print("finished")
 
+	print("uploading js ball...", end = "")
 	upload.upload(jsurl, alljs)
+	print("finished")
+
+	if len(sys.argv) >= 3:
+		print("uploading page...", end = "")
+		upload.upload("Team:" + config.TEAM_NAME + sys.argv[2], res)
+		print("finished")
 else:
 	print("wrong argument")
+	print("usage: " + sys.argv[0] + " <html source file> [target url(will be formatted as /Team:<TEAM_NAME><url>)]")

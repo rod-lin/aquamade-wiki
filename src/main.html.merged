@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{Template:HFLS_H2Z_Hangzhou}}<!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -96,6 +96,10 @@ a:hover {
 	border-right: 3px solid transparent;
 
 	transition: border 0.2s;
+}
+
+.main.menu .item a:visited {
+	text-decoration: none;
 }
 
 .main.menu .item.selected,
@@ -378,7 +382,7 @@ a:hover {
 		if (ADEBUG) {
 			$(document).ready(function () {
 				$.ajax({
-					url: "sub/hp.html",
+					url: "sub/home.html",
 					success: function (dat) {
 						$(".main.cont-wrap").append(dat);
 					}
@@ -415,6 +419,10 @@ a:hover {
 					
 					<div class="item item-hprac">
 						<a href="/Team:HFLS_H2Z_Hangzhou/hp">HUMAN PRACTICES</a>
+					</div><br>
+
+					<div class="item item-note">
+						<a target="_blank" href="http://note.aquamade.wiki">NOTEBOOK</a>
 					</div><br>
 					
 					<div class="item item-team">

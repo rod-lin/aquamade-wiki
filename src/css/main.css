@@ -91,6 +91,10 @@ a:hover {
 	transition: border 0.2s;
 }
 
+.main.menu .item a:visited {
+	text-decoration: none;
+}
+
 .main.menu .item.selected,
 .main.menu .item:hover {
 	border-left-color: #2980B9;

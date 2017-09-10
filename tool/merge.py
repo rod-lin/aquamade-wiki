@@ -99,8 +99,8 @@ if len(sys.argv) >= 2:
 
 	if len(sys.argv) >= 3:
 		print("uploading page...", end = "")
-		upload.upload("Team:" + config.TEAM_NAME + sys.argv[2], res)
+		upload.upload(sys.argv[2], res)
 		print("finished")
 else:
 	print("wrong argument")
-	print("usage: " + sys.argv[0] + " <html source file> [target url(will be formatted as /Team:<TEAM_NAME><url>)]")
+	print("usage: " + sys.argv[0] + " <html source file> [target url]")

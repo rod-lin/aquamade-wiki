@@ -27,7 +27,7 @@
 	</style>
 
 	<script>
-		window.ADEBUG = true;
+		window.ADEBUG = window.location.hostname == "localhost";
 
 		$(document).ready(function () {
 			// alert(Modernizr.csstransforms3d);
@@ -122,9 +122,11 @@
 	<script>
 		/* just for debug */
 		if (ADEBUG) {
+			var hash = window.location.hash.substring(1);
+			
 			$(document).ready(function () {
 				$.ajax({
-					url: "sub/home.html",
+					url: hash ? "sub/" + hash + ".html" : "sub/home.html",
 					success: function (dat) {
 						$(".main.cont-wrap").append(dat);
 					}

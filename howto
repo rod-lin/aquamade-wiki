@@ -1,0 +1,18 @@
+## utils for uploading the pages
+
+1. Every page need to be 'merged' with linked resources before being uploaded to iGEM
+2. use `python3 merge.py file /<page_name>` to merge and upload the page to /Team:<TEAM_NAME><url>
+   (mind the slash!)
+3. upload.py will save a log file `log.html` for debuging 
+
+4. OR just use `update.py [page name(in config.py)]` to update!!!(RECOMMENDED!!)
+
+## html pages
+
+1. `sub/*.html` are pages that are really uploaded to iGEM wiki
+2. `main.html` are used for local tests
+
+## local test
+
+1. `npm start` to start server
+2. goto `localhost:3141/main.html`

@@ -51,7 +51,9 @@
 
 			text-align: left;
 
-			max-width: 50rem;
+			width: 50rem;
+			max-width: 100%;
+			
 			line-height: 1.2;
 
 			color: rgba(80, 80, 80, 1);
@@ -63,6 +65,7 @@
 		.page-home .article img {
 			border-radius: 3px;
 			margin: 2rem 0;
+			max-width: 100%;
 			box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 		}
 

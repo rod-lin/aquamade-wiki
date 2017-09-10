@@ -72,5 +72,5 @@ def upload(file, data, cookie = GLOBAL_COOKIE):
 		"wpUltimateParam": "1"
 	}
 
-	open("tmp.html", "w").write(post(url, dat, cookie).read().decode());
+	open("log.html", "w").write(post(url, dat, cookie).read().decode());
 	

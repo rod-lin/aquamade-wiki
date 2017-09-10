@@ -2,10 +2,10 @@
 
 @font-face {
 	font-family: Brandon;
-	src: url("http://2017.igem.org/wiki/images/b/b8/T--HFLS_H2Z_Hangzhou--font_brandon_regular_woff.woff") format("woff"),
-		 url("http://2017.igem.org/wiki/images/0/0e/T--HFLS_H2Z_Hangzhou--font_brandon_regular_ttf.ttf") format("truetype"),
-		 url("http://2017.igem.org/wiki/images/f/ff/T--HFLS_H2Z_Hangzhou--font_brandon_regular_eot.eot") format("embedded-opentype"),
-		 url("http://2017.igem.org/wiki/images/1/17/T--HFLS_H2Z_Hangzhou--font_brandon_regular_svg.svg") format("svg"),
+	src: url("/wiki/images/b/b8/T--HFLS_H2Z_Hangzhou--font_brandon_regular_woff.woff") format("woff"),
+		 url("/wiki/images/0/0e/T--HFLS_H2Z_Hangzhou--font_brandon_regular_ttf.ttf") format("truetype"),
+		 url("/wiki/images/f/ff/T--HFLS_H2Z_Hangzhou--font_brandon_regular_eot.eot") format("embedded-opentype"),
+		 url("/wiki/images/1/17/T--HFLS_H2Z_Hangzhou--font_brandon_regular_svg.svg") format("svg"),
 		 url("fallback.ttf") format("truetype");
 	font-weight: normal;
 	font-style: normal;

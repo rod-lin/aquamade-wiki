@@ -40,10 +40,11 @@
 		.page-home .main-title {
 			font-size: 9rem;
 			text-align: center;
+			color: white;
 		}
 
-		.page-home .blue {
-			color: #3498DB;
+		.page-home .red {
+			color: #E55844;
 		}
 
 		.page-home .article {
@@ -54,7 +55,7 @@
 			width: 50rem;
 			max-width: 100%;
 			
-			line-height: 1.2;
+			line-height: 1.5;
 
 			color: rgba(80, 80, 80, 1);
 
@@ -65,8 +66,8 @@
 		.page-home .article img {
 			border-radius: 3px;
 			margin: 2rem 0;
-			max-width: 100%;
 			box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+			width: 100%;
 		}
 
 		.page-home .article .imgbox {
@@ -76,9 +77,13 @@
 		.page-home .isocity {
 			position: absolute;
 			top: 0; left: 0;
-			opacity: 0.3;
 			width: 100%;
 			height: 100%;
+			
+			background-image: url("/img/cover3.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: bottom right;
 		}
 	</style>
 
@@ -88,7 +93,7 @@
 			<div class="main-effect"></div>
 			<div class="vcenter" style="line-height: 1;">
 				<span>Hangzhou</span><br>
-				<span>HFLS<span class="blue">&amp;</span>H2Z</span>
+				<span>HFLS<span class="red">&amp;</span>H2Z</span>
 			</div>
 		</div>
 		<div class="block">
@@ -125,8 +130,8 @@
 
 			var main = $(this);
 
-			var iso = Isocity(main.find(".isocity"));
-			setTimeout(iso.gen, 0);
+			// var iso = Isocity(main.find(".isocity"));
+			// setTimeout(iso.gen, 0);
 
 			function genMember(pic, name, descr) {
 				var mem = $('<div class="ui card member"> \
@@ -147,10 +152,6 @@
 			main.find(".learn-more-btn").click(function () {
 				Aquamade.menu.toggle();
 			});
-
-			// main.find(".member-box").append(genMember("/img/elliot.jpg", "Canal", "Beautiful"));
-			// main.find(".member-box").append(genMember("/img/matt.jpg", "Sam", "Gorgeous"));
-			// main.find(".member-box").append(genMember("/img/stevie.jpg", "Daniel", "Cool"));
 		});
 
 	</script>

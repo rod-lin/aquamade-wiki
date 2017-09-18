@@ -1,6 +1,7 @@
 
 from html.parser import HTMLParser
 
+import base64
 import sys
 import re
 import os
@@ -17,6 +18,8 @@ def expand(path):
 
 	href_reg = re.compile(r"href=['\"]([^'\"]*)['\"]")
 	src_reg = re.compile(r"src=['\"]([^'\"]*)['\"]")
+	
+	img_reg = re.compile(r"/img/.*\.jpg")
 
 	css_reg = re.compile(r"<link[^>]*>")
 	script_reg = re.compile(r"<script[^>]*>[^<]*</script>")
@@ -75,9 +78,18 @@ def expand(path):
 						return "<script src='/" + jsurl + "?action=raw&ctype=text/javascript'></script>"
 
 		return tag
+		
+	def rep_img(m):
+		img = m.group(0)
+
+		with open(abs_base + img, "rb") as f:
+			url = "data:image/jpeg;base64," + bytes.decode(base64.b64encode(f.read()))
+			# print(url[:100])
+			return url
 
 	cont = css_reg.sub(rep_css, cont)
 	cont = script_reg.sub(rep_js, cont)
+	cont = img_reg.sub(rep_img, cont)
 
 	# print(cont)
 

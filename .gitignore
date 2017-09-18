@@ -2,7 +2,7 @@ upload.sh
 upload.log
 *.nt
 
-*.merged
+*.html.merged
 
 node_modules/
 

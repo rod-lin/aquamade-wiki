@@ -36,6 +36,8 @@ a:hover {
 	opacity: 0;
 
 	text-align: center;
+	
+	background: rgb(40, 40, 40);
 
 	user-select: none;
 	-moz-user-select: none;
@@ -145,19 +147,20 @@ a:hover {
 	position: absolute;
 	top: 0; left: 0;
 	width: 100%; height: 100%;
-	background: rgba(253, 253, 253, 1);
+	background: transparent;
 
 	overflow: auto;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 1);
 
-	transition: 0.3s cubic-bezier(0.2, 1, 0.2, 1);
+	transition: all 0.3s cubic-bezier(0.2, 1, 0.2, 1);
 }
 
 .main.view.open-menu .main.cont-wrap {
 	overflow: hidden;
 }
 
-.main.view.open-menu .main.cont-wrap {
+.main.view.open-menu .main.cont-wrap,
+.main.view.open-menu .bg-layer {
 	left: 18em;
 }
 
@@ -217,3 +220,15 @@ a:hover {
 	border-radius: 3px;
 }
 */
+
+.bg-layer {
+	position: absolute;
+	
+	left: 0; top: 0;
+	height: 100%;
+	width: 100%;
+	
+	background: rgb(253, 253, 253);
+	
+	transition: left 0.3s cubic-bezier(0.2, 1, 0.2, 1);
+}

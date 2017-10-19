@@ -89,7 +89,7 @@ def expand(path):
 
 	cont = css_reg.sub(rep_css, cont)
 	cont = script_reg.sub(rep_js, cont)
-	cont = img_reg.sub(rep_img, cont)
+	# cont = img_reg.sub(rep_img, cont)
 
 	# print(cont)
 

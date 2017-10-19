@@ -239,6 +239,11 @@ a:hover {
 .center {
 	width: auto !important;
 }
+
+.block {
+	padding: 3rem 0;
+	text-align: center;
+}
 </style>
 		<style>@charset "UTF-8";
 
@@ -281,6 +286,15 @@ a:hover {
 	<style>
 		#top_menu_14:hover {
 			top: 0 !important;
+		}
+		
+		html {
+			line-height: 1 !important;
+			font-size: 14px !important;
+		}
+		
+		#globalWrapper {
+			font-size: 100% !important;
 		}
 	</style>
 

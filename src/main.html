@@ -18,11 +18,24 @@
 		<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
 		<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/semantic-ui/2.2.10/semantic.min.css">
 		<script src="https://cdn.bootcss.com/semantic-ui/2.2.10/semantic.min.js"></script>
+	
+		<script src="https://cdn.bootcss.com/three.js/r83/three.min.js"></script>
+		
+		<script src="js/bgeffect.js"></script>
 	</head>
 
 	<style>
 		#top_menu_14:hover {
 			top: 0 !important;
+		}
+		
+		html {
+			line-height: 1 !important;
+			font-size: 14px !important;
+		}
+		
+		#globalWrapper {
+			font-size: 100% !important;
 		}
 	</style>
 
@@ -116,6 +129,10 @@
 					}
 				};
 			})();
+			
+			var bgeff = new BGEffect(".bg-layer");
+			
+			bgeff.start();
 		});
 	</script>
 
@@ -181,6 +198,8 @@
 			><div class="main btn info-btn show-on-menu"><i class="fa fa-question-circle"></i></div>
 		</div>
 
+		<div class="bg-layer"></div>
+		
 		<div class="main cont-wrap">
 
 	<!-- Concat with content -->

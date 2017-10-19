@@ -9,6 +9,32 @@
 	background-position: 50% 50%;
 }
 
+.img.framed {
+	width: 100%;
+	
+	background: rgb(250, 250, 250);
+	
+	border-radius: 5px;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	overflow: hidden;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.04);
+	
+	outline: none;
+	
+	margin: 1rem 0;
+}
+
 .center {
 	width: auto !important;
+}
+
+.block {
+	padding: 3rem 0;
+	text-align: center;
+}
+
+.article {
+	display: inline-block;
+	max-width: 50rem;
+	text-align: left;
 }

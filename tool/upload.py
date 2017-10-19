@@ -73,4 +73,9 @@ def upload(file, data, cookie = GLOBAL_COOKIE):
 	}
 
 	open("log.html", "w").write(post(url, dat, cookie).read().decode());
-	
+
+def uploadImage(file, cookie = GLOBAL_COOKIE):
+	url = "http://" + config.IGEM_YEAR + ".igem.org/Special:Upload"
+	dat = {
+		
+	}

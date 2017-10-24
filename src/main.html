@@ -46,6 +46,25 @@
 			// alert(Modernizr.csstransforms3d);
 			// if (Modernizr.csstransforms3d) {
 			// }
+			
+			$(".main.cont-wrap").scroll(function () {
+				if ($(".main.cont-wrap").scrollTop() > 5) {
+					$(".main.nav").addClass("floated");
+				} else {
+					$(".main.nav").removeClass("floated");
+				}
+			});
+			
+			window.menu = {};
+			
+			window.menu.setItem = function (name) {
+				$(".main.nav .link-item.selected").removeClass("selected");
+				$(".main.nav .link-item." + name).addClass("selected");
+			};
+			
+			window.menu.reverse = function () {
+				$(".main.nav").addClass("always reversed");
+			};
 
 			var glob = window;
 
@@ -153,49 +172,16 @@
 	</script>
 
 	<div class="main view">
-		<div class="main menu">
-			<div class="items">
-				<div class="logo"><i class="fa fa-bath"></i></div><br>
-				<div style="text-align: center; display: inline-block; width: auto;">
-					<div class="item item-home">
-						<a href="/Team:HFLS_H2Z_Hangzhou">HOME</a>
-					</div><br>
-					
-					<div class="item item-project">
-						<a href="/Team:HFLS_H2Z_Hangzhou/project">PROJECT</a><!-- <br>
-						<div class="sub-items">
-							<div class="sub-item">OVERVIEW</div><br>
-							<div class="sub-item">RESULTS</div><br>
-							<div class="sub-item">PROFF</div>
-						</div> -->
-					</div><br>
-					
-					<div class="item item-parts">
-						<a href="/Team:HFLS_H2Z_Hangzhou/parts">PARTS</a>
-					</div><br>
-					
-					<div class="item item-model">
-						<a href="/Team:HFLS_H2Z_Hangzhou/model">MODELLING</a>
-					</div><br>
-					
-					<div class="item item-hprac">
-						<a href="/Team:HFLS_H2Z_Hangzhou/hp">HUMAN PRACTICES</a>
-					</div><br>
-
-					<div class="item item-note">
-						<a target="_blank" href="http://note.aquamade.wiki">NOTEBOOK</a>
-					</div><br>
-					
-					<div class="item item-team">
-						<a href="/Team:HFLS_H2Z_Hangzhou/team">TEAM</a>
-					</div><br>
-				</div>
-			</div>
-		</div>
-
-		<div class="main top-btn-set">
-			<div class="main btn menu-btn"><i class="fa fa-bars"></i></div
-			><div class="main btn info-btn show-on-menu"><i class="fa fa-question-circle"></i></div>
+		<div class="main nav">
+			<a class="logo-name">Aquamade</a>
+			<span class="link-set">
+				<a href="/Team:HFLS_H2Z_Hangzhou" class="nav link-item selected">Home</a>
+				<a href="/Team:HFLS_H2Z_Hangzhou" class="nav link-item">Project</a>
+				<a href="/Team:HFLS_H2Z_Hangzhou" class="nav link-item">Parts</a>
+				<a href="/Team:HFLS_H2Z_Hangzhou" class="nav link-item">Modelling</a>
+				<a href="/Team:HFLS_H2Z_Hangzhou/Team" class="nav link-item team">Team</a>
+				<a href="/Team:HFLS_H2Z_Hangzhou" class="nav link-item">Human Practices</a>
+			</span>
 		</div>
 
 		<div class="bg-layer"></div>

@@ -1,11 +1,17 @@
 <html>
+	<script>
+		$(function () {
+			menu.reverse();
+			menu.setItem("team");
+		});
+	</script>
 	<div class="page-team" style="font-family: Veneer;">
-		<div class="main-block fullscr main-title" style="font-size: 7rem; text-align: center; background: rgb(252, 252, 252);">
+		<div class="main-block fullscr main-title" style="font-size: 7rem; text-align: center;">
 			<div class="vcenter" style="line-height: 1;">
 				<span>Team</span>
 			</div>
 		</div>
-		<div class="block member-block-cont" style="background: rgb(250, 250, 250); border-top: 1px solid rgba(0, 0, 0, 0.08);">
+		<div class="block member-block-cont" style="border-top: 1px solid rgba(0, 0, 0, 0.08);">
 			<style>
 				
 				.member-block {
@@ -56,8 +62,6 @@
 					
 					text-align: left;
 					margin-left: 1rem;
-					
-					padding: 1rem 0;
 				}
 				
 				.member-block .intro .title {

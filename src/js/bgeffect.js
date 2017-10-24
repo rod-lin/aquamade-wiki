@@ -12,7 +12,7 @@
 		});
 		
 		renderer.setSize(dom.innerWidth(), dom.innerHeight());
-		renderer.setClearColor(0xfcfcfc);
+		renderer.setClearColor(0xfdfdfd);
 		dom.append(renderer.domElement);
 		
 		this.renders = [];
@@ -20,10 +20,10 @@
 		var light = new THREE.HemisphereLight(0xe9eff2, 0x01010f, 1);
 		scene.add(light);
 		
-		var geometry = new THREE.SphereGeometry(2.5, 10, 10);
+		var geometry = new THREE.SphereGeometry(10, 36, 36);
 		var wireframe = new THREE.WireframeGeometry(geometry);
 		var material = new THREE.LineBasicMaterial({
-			color: 0xaaaaaa,
+			color: 0xf0f0f0,
 			linewidth: 1,
 		});
 		var circle = new THREE.Line(wireframe, material);
@@ -32,9 +32,10 @@
 		camera.position.z = 10;
 		
 		this.renders.push(function () {
-			circle.rotation.x += 0.01;
-			circle.rotation.y += 0.01;
-			circle.rotation.z += 0.01;
+			var scroll = $(".main.cont-wrap").scrollTop();
+			circle.rotation.x = scroll / 2000;
+			circle.rotation.y = scroll / 2000;
+			circle.rotation.z = scroll / 2000;
 		});
 		
 		this.scene = scene;

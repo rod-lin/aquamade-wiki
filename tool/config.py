@@ -10,7 +10,7 @@ PAGES = {
     "note": (ABS_BASE + "/sub/note.html",       "Team:%s/note" % TEAM_NAME),
     "parts": (ABS_BASE + "/sub/parts.html",     "Team:%s/parts" % TEAM_NAME),
     "project": (ABS_BASE + "/sub/project.html", "Team:%s/project" % TEAM_NAME),
-    "team": (ABS_BASE + "/sub/team.html",       "Team:%s/team" % TEAM_NAME),
+    "team": (ABS_BASE + "/sub/team.html",       "Team:%s/Team" % TEAM_NAME),
     
     # standard pages
     "attrib": (ABS_BASE + "/sub/attrib.html",       "Team:%s/Attributions" % TEAM_NAME),

@@ -23,7 +23,7 @@
 		var geometry = new THREE.SphereGeometry(10, 36, 36);
 		var wireframe = new THREE.WireframeGeometry(geometry);
 		var material = new THREE.LineBasicMaterial({
-			color: 0xf0f0f0,
+			color: 0xeeeeee,
 			linewidth: 1,
 		});
 		var circle = new THREE.Line(wireframe, material);
@@ -33,8 +33,8 @@
 		
 		this.renders.push(function () {
 			var scroll = $(".main.cont-wrap").scrollTop();
-			circle.rotation.x = scroll / 2000;
-			circle.rotation.y = scroll / 2000;
+			circle.rotation.x = scroll / 1000;
+			circle.rotation.y = scroll / 1000;
 			circle.rotation.z = scroll / 2000;
 		});
 		

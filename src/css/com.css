@@ -1,3 +1,12 @@
+a {
+	text-decoration: none !important;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: Veneer !important;
+	font-weight: normal !important;
+}
+
 .fullscr {
 	height: 100vh;
 	width: 100%;
@@ -34,7 +43,71 @@
 }
 
 .article {
+	position: relative;
 	display: inline-block;
-	max-width: 50rem;
+	width: 50rem;
+	max-width: 100%;
 	text-align: left;
+}
+
+.wide.article {
+	width: 70rem;
+}
+
+.article-font {
+	font-family: Brandon;
+	line-height: 1.6;
+	font-size: 1.3em;
+}
+
+.white-bg {
+	background: rgb(253, 253, 253);
+}
+
+.line-sep {
+	display: block;
+	height: 1px;
+	background: rgba(0, 0, 0, 0.08);
+}
+
+.blue {
+	color: #3498DB;
+}
+
+.green {
+	color: #2ECC71;
+}
+
+.quick-link {
+	display: inline-block;
+	
+	border-radius: 4px;
+	height: 7rem;
+	width: 14rem;
+	overflow: hidden;
+	
+	line-height: 7rem;
+	text-align: center;
+	
+	font-size: 2rem;
+	
+	color: white;
+	
+	cursor: pointer;
+	
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	margin: 0 1rem 1rem 0;
+	
+	background-color: rgb(250, 250, 250);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+	
+	transition: box-shadow 0.3s;
+}
+
+.quick-link:hover {
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.22);
 }

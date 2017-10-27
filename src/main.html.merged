@@ -90,7 +90,7 @@ a:hover {
 }
 
 .main.nav {
-	z-index: 1;
+	z-index: 102;
 	position: fixed;
 	padding: 3em;
 	width: 100%;
@@ -109,7 +109,7 @@ a:hover {
 	
 	text-transform: uppercase;
 	
-	transition: padding 0.3s;
+	transition: padding 0.3s, background 0.15s;
 }
 
 .main.nav .logo-name {
@@ -134,13 +134,14 @@ a:hover {
 }
 
 .main.nav .link-set .link-item {
+	position: relative;
+	
 	margin-right: 0.5em;
 	padding: 0.7em 1em;
 	cursor: pointer;
 	
 	border: 2px solid transparent;
 	background: transparent;
-	color: white;
 	
 	white-space: nowrap;
 	
@@ -152,6 +153,51 @@ a:hover {
 	border-color: white;
 	background: white;
 	color: black !important;
+}
+
+.main.nav .link-set .link-item .expand-item-set-cont {
+	position: absolute;
+	display: block;
+	
+	margin-top: 5px;
+	left: -7px; /* 5 + 2 */
+	top: 100%;
+	
+	padding-top: 1em;
+	
+	pointer-events: none;
+	opacity: 0;
+	
+	transition: opacity 0.3s, margin-top 0.3s, left 0.3s;
+}
+
+.main.nav .link-set .link-item:hover .expand-item-set-cont {
+	pointer-events: auto;
+	opacity: 1;
+	
+	margin-top: 0;
+	left: -2px; /* 10 + 2 */
+}
+
+.main.nav .link-set .link-item .expand-item-set {
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.04);
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.main.nav .link-set .link-item .expand-item-set .sub-link-item {
+	display: block;
+	padding: 1em 1em;
+	color: rgb(70, 70, 70) !important;
+	background: rgb(253, 253, 253);
+	
+	transition: color 0.3s, background 0.3s;
+}
+
+.main.nav .link-set .link-item:hover .expand-item-set .sub-link-item:hover {
+	color: rgb(253, 253, 253) !important;
+	background: rgb(70, 70, 70);
 }
 
 .main.nav.floated {
@@ -176,8 +222,18 @@ a:hover {
 	border-color: rgb(70, 70, 70);
 	background: rgb(70, 70, 70);
 	color: white !important;
-}</style>
-		<style>.fullscr {
+}
+</style>
+		<style>a {
+	text-decoration: none !important;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: Veneer !important;
+	font-weight: normal !important;
+}
+
+.fullscr {
 	height: 100vh;
 	width: 100%;
 }
@@ -213,9 +269,73 @@ a:hover {
 }
 
 .article {
+	position: relative;
 	display: inline-block;
-	max-width: 50rem;
+	width: 50rem;
+	max-width: 100%;
 	text-align: left;
+}
+
+.wide.article {
+	width: 70rem;
+}
+
+.article-font {
+	font-family: Brandon;
+	line-height: 1.6;
+	font-size: 1.3em;
+}
+
+.white-bg {
+	background: rgb(253, 253, 253);
+}
+
+.line-sep {
+	display: block;
+	height: 1px;
+	background: rgba(0, 0, 0, 0.08);
+}
+
+.blue {
+	color: #3498DB;
+}
+
+.green {
+	color: #2ECC71;
+}
+
+.quick-link {
+	display: inline-block;
+	
+	border-radius: 4px;
+	height: 7rem;
+	width: 14rem;
+	overflow: hidden;
+	
+	line-height: 7rem;
+	text-align: center;
+	
+	font-size: 2rem;
+	
+	color: white;
+	
+	cursor: pointer;
+	
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	margin: 0 1rem 1rem 0;
+	
+	background-color: rgb(250, 250, 250);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+	
+	transition: box-shadow 0.3s;
+}
+
+.quick-link:hover {
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.22);
 }
 </style>
 		<style>@charset "UTF-8";
@@ -411,12 +531,74 @@ a:hover {
 		<div class="main nav">
 			<a class="logo-name">Aquamade</a>
 			<span class="link-set">
-				<a href="/Team:HFLS_H2Z_Hangzhou" class="nav link-item selected">Home</a>
-				<a href="/Team:HFLS_H2Z_Hangzhou" class="nav link-item">Project</a>
-				<a href="/Team:HFLS_H2Z_Hangzhou" class="nav link-item">Parts</a>
-				<a href="/Team:HFLS_H2Z_Hangzhou" class="nav link-item">Modelling</a>
-				<a href="/Team:HFLS_H2Z_Hangzhou/Team" class="nav link-item team">Team</a>
-				<a href="/Team:HFLS_H2Z_Hangzhou" class="nav link-item">Human Practices</a>
+				<a href="/Team:HFLS_H2Z_Hangzhou" class="nav link-item home">Home</a>
+				
+				<span class="nav link-item achiev">
+					<i class="angle down icon"></i>Achievement
+					<div class="expand-item-set-cont">
+						<div class="expand-item-set">
+							<a class="sub-link-item">Parts</a>
+							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Collaborations">Collaborations</a>
+						</div>
+					</div>
+				</span>
+				
+				<span class="nav link-item project">
+					<i class="angle down icon"></i>Project
+					<div class="expand-item-set-cont">
+						<div class="expand-item-set">
+							<a class="sub-link-item">Overview</a>
+							<a class="sub-link-item">Background</a>
+							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Applied_Design">Design</a>
+							<a class="sub-link-item">Enzyme</a>
+							<a class="sub-link-item">Generic Circuits</a>
+							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Demonstrate">Performance</a>
+						</div>
+					</div>
+				</span>
+
+				<span class="nav link-item model">
+					<i class="angle down icon"></i>Modeling
+					<div class="expand-item-set-cont">
+						<div class="expand-item-set">
+							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Model">Models</a>
+							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Software">Software</a>
+						</div>
+					</div>
+				</span>
+				
+				<a href="/Team:HFLS_H2Z_Hangzhou" href="/Team:HFLS_H2Z_Hangzhou/Safety" class="nav link-item safety">Safety</a>
+				
+				<span class="nav link-item team">
+					<i class="angle down icon"></i>Team
+					<div class="expand-item-set-cont">
+						<div class="expand-item-set">
+							<a class="sub-link-item">Member</a>
+							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Attributions">Attribution</a>
+						</div>
+					</div>
+				</span>
+				
+				<span class="nav link-item note">
+					<i class="angle down icon"></i>Notebook
+					<div class="expand-item-set-cont">
+						<div class="expand-item-set">
+							<a class="sub-link-item">Experiments</a>
+							<a class="sub-link-item">Protocols</a>
+							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/InterLab">Interlab</a>
+						</div>
+					</div>
+				</span>
+				
+				<span class="nav link-item hp">
+					<i class="angle down icon"></i>Human Practices
+					<div class="expand-item-set-cont">
+						<div class="expand-item-set">
+							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/HP/Gold_Integrated">Public Outreach</a>
+							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/HP/Silver">Integrated</a>
+						</div>
+					</div>
+				</span>
 			</span>
 		</div>
 

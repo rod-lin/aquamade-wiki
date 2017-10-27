@@ -1,7 +1,9 @@
 <html>
-	<head>
-		<script src="/js/isocity.js"></script>
-	</head>
+	<script>
+		$(function () {
+			menu.setItem("home");
+		});
+	</script>
 
 	<style>
 		.page-home {
@@ -73,29 +75,34 @@
 		.page-home .article .imgbox {
 			text-align: center;
 		}
-
-		.page-home .isocity {
-			position: absolute;
-			top: 0; left: 0;
-			width: 100%;
-			height: 100%;
-			
-			background-image: url("/img/cover3.jpg");
-			background-repeat: no-repeat;
-			background-size: cover;
-			background-position: bottom right;
-		}
 	</style>
 
 	<div class="page-home">
-		<div class="main-block fullscr no-pad block main-title">
-			<div class="isocity"></div>
+		<div class="main-block fullscr no-pad block main-title" style="background-image: url('/img/cover3.jpg');">
 			<div class="main-effect"></div>
 			<div class="vcenter" style="line-height: 1;">
 				<span>Hangzhou</span><br>
 				<span>HFLS<span class="red">&amp;</span>H2Z</span>
 			</div>
 		</div>
+		
+		<style>
+		</style>
+		
+		<div class="block white-bg">
+			<h1>Quick Link</h1>
+			<div class="article" style="margin-top: 1em; padding-left: 1rem; text-align: center;">
+				<div class="quick-link" style="background-image: url('/img/qlink/project.png');"></div>
+				<div class="quick-link" style="background-image: url('/img/qlink/achiev.png');"></div>
+				<div class="quick-link" style="background-image: url('/img/qlink/model.png');"></div>
+				<div class="quick-link" style="background-image: url('/img/qlink/team.png');"></div>
+				<div class="quick-link" style="background-image: url('/img/qlink/hp.png');"></div>
+				<div class="quick-link" style="background-image: url('/img/qlink/interlab.png');"></div>
+			</div>
+		</div>
+		
+		<div class="line-sep"></div>
+		
 		<div class="block">
 			<div class="title">What do we do</div>
 			<div class="article">
@@ -129,9 +136,6 @@
 			Aquamade.menu.selectItem("home");
 
 			var main = $(this);
-
-			// var iso = Isocity(main.find(".isocity"));
-			// setTimeout(iso.gen, 0);
 
 			function genMember(pic, name, descr) {
 				var mem = $('<div class="ui card member"> \

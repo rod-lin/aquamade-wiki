@@ -1,0 +1,169 @@
+<html>
+	<script>
+		$(function () {
+			menu.reverse();
+			menu.setItem("hp");
+			
+			$(".page-integ .float-menu").sticky({
+				scrollContext: $(".main.cont-wrap"),
+				context: $(".page-integ"),
+				offset: $(".main.nav").outerHeight(true)
+			});
+			
+			function showPassage(name) {
+				$(".page-integ .passage.shown").removeClass("shown");
+				$(".page-integ .passage.passage-" + name).addClass("shown");
+			}
+			
+			function setUniqueActive(dom) {
+				$(dom).siblings(".active").removeClass("active");
+				$(dom).addClass("active");
+			}
+			
+			$(".page-integ .passlink").each(function (i, dom) {
+				dom = $(dom);
+				
+				dom.click(function () {
+					var passage = dom.data("passage"); 
+					
+					if (passage)
+						showPassage(passage);
+				
+					setUniqueActive(dom);
+					
+					$(".page-integ .passlink").each(function (i, dom) {
+						dom = $(dom);
+						
+						if (dom.data("passage") == passage) {
+							setUniqueActive(dom);
+						}
+					});
+				});
+			});
+		});
+	</script>
+	<div class="page-integ" style="font-family: Veneer;">
+		<div class="main-block fullscr main-title" style="font-size: 7rem; text-align: center;">
+			<div class="vcenter" style="line-height: 1;">
+				<span>Human Practice</span><br>
+				<span class="blue">Integrated</span>
+			</div>
+		</div>
+		
+		<div class="line-sep"></div>
+		
+		<div class="block white-bg">
+			<h1>Quick Menu</h1>
+			<div class="quick-link passlink" data-passage="foodadmin" style="background-image: url('/img/hp/foodadmin1.jpg');">Food Admin</div>
+			<div class="quick-link passlink" data-passage="zjuint" style="background-image: url('/img/hp/zjuint1.jpg');">ZJU Interview</div>
+			<div class="quick-link passlink" data-passage="busi" style="background-image: url('/img/hp/busi1.jpg');">Business study</div>
+		</div>
+		
+		<div class="line-sep"></div>
+		
+		<style>
+		
+			.float-menu {
+				position: absolute;
+				left: 0;
+				width: 17rem !important;
+			}
+			
+			.article-cont {
+				padding-left: 19rem;
+			}
+			
+			.passage {
+				display: none;
+			}
+			
+			.passage.shown {
+				display: block;
+			}
+			
+		</style>
+		
+		<div class="block white-bg main-cont-block">
+			<div class="wide article article-font">
+				<!-- <div class="ui vertical menu float-menu">
+					<div class="item">
+						<div class="header">Interview with Food Administration</div>
+						<div class="menu">
+							<a class="item">Enterprise</a>
+							<a class="item">Consumer</a>
+						</div>
+					</div>
+				</div> -->
+				<div style="position: absolute; left: 0; top: 0;">
+					<div class="ui secondary vertical menu float-menu sticky">
+						<a class="active item passlink" data-passage="foodadmin">Food Administration</a>
+						<a class="item passlink" data-passage="zjuint">ZJU Interview</a>
+						<a class="item passlink" data-passage="busi">Business Study</a>
+					</div>
+				</div>
+				
+				<div class="article-cont">
+					<div class="passage passage-foodadmin shown">
+						<h1>The Visit to Zhejiang Food and Drug Administration</h1>
+						
+						With many concerns about the regulation of food processing using synthetic biology materials, Jianan Li from team HFLS_H2Z_hangzhou and Junbo Yang from team ZJU-China contacted Dr.Jin at Zhejiang Food and Drug Administration. He introduced the process of regulation: by scrutinizing the raw materials and production process, quality control specialists predict the possible impurities in the final product, and then set specific examining procedures and standards.
+						<br><br>
+						Since we were planning to use the enzymes from E. coli in pickle processing, we raised a number of questions regarding genetic engineering bacteria and their products. Dr.Jin explained that there are more tests for organic impurities than for bacteria themselves. However, if the bacterium used is not proven safe for human health, the test and control will be much stricter. Although the bacteria are usually removed during production, even if there is one colony left in the product, it will be cultured for identification. Different methods are applied for different types of bacteria.
+						<br><br>
+						When asked about molecular detection method such as whole genome sequencing, Dr. Jin said, there are already some trials and applications. Yet the required equipment and personnel for such technology are not widely available, so it is still too early to issue new regulatory guideline and promote the method.
+						<br><br>
+						To our great excitement, Dr. Jin was quite interested in the details of our project and we had a thorough discussion. From that, we realized the importance of removing all of the bio toxins in the final product. Our original experiment design—separately express three enzymes—was too prone to bio toxin leakage. Therefore, we improved our method to Fusion Protein.
+						<br>
+						
+						<img class="framed img" src="/img/hp/foodadmin1.jpg"></img>
+						<img class="framed img" src="/img/hp/foodadmin2.jpg"></img>
+					</div>
+					
+					<div class="passage passage-zjuint">
+						<h1>Interview with Professor from Zhejiang University</h1>
+						
+						We conducted an interview with Hu Xiaoyun, the professor at Zhejiang University, about her opinions on synthetic biology and biosafety. Professor Hu started to pay close attention to the development of synthetic biology at an early stage, and she wrote a proposal to raise the awareness for this area. As a professor from the Faculty of Medicine, most of her thoughts and concerns were about mammals, such as genetic editing of embryos and in vivo experiments. She also underlined the potential risk of biological weapon, whose effect would be hugely disastrous for the whole society.
+						<br><br>
+						Since we chose a strain of bacteria as our chassis, and bacteria are the most thoroughly researched and widely used, we asked Professor Hu about synthetic biology on microorganisms. Her feeling was, although it has been developing rapidly in the past few years, most of the methods are yet to be applied in large scale, so it is still unheard-of for the majority of people. For governments, since the long-term effect remain unknown, they cannot issue new regulations. This leads to a potential problem: if laboratories or individuals use illegal sources of organisms, or the material is not properly disposed, it might do harm to the human health and environment.
+						<br><br>
+						The problem of biosafety cannot be solved without the effort from authorities and academia, as well as the understanding of the general public. After the interview, we became more determined to organize and improve the outreach activities for students.
+						<br><br>
+						
+						<img class="framed img" src="/img/hp/zjuint1.jpg"></img>
+					</div>
+	
+					<div class="passage passage-busi">
+						(Concerning the huge blank market, we did a business research in to the issue)
+						<br>
+						<h1>Nitrite Reduction: a Business Study</h1>
+						
+						Outline:
+						<br>
+						1. Number of people getting gastric cancer by the Nitrosamine.
+						<br>
+						2. Reason behind Nitrosamine causing people to get cancer, and data back by research done in the lab with animals.
+						<br>
+						3. The severity of the problem because of the amount of Nitrosamine people use in everyday’s meal.
+						<br>
+						4. How the new chemical created by the team, which can reduce nitrite.
+						<br><br>
+						During the 12th International Gastric Cancer Congress in 20-23 April 2017, a number has been revealed—650 thousand—which is the total number of gastric cancer patient in China in the year 2017. Gastric cancer, also known as stomach cancer, is a cancer that develops from the lining of stomach and may spread to other part of the body. After the spreading, gastric cancer are usually difficult to cure, however, few symptoms can be caused before the spreading of gastric cancer, which contributes to an overall death rate of 0.28 (American Cancer Society, 2017). Though the reasons of having gastric cancer remain puzzle, there has been studies that  relate having gastric cancer to exceeding amount of nitrosamine, due to intaking nitrite. In normal stomach acid condition nitrite can react with secondary amine and nitrosamine is the product formed inside of human body.
+						<br><br>
+						Paula Jakszyn and Carlos Alberto González’s case-control study (1) have found a positive association of nitrite and gastric cancer (Paula Jakszyn, Carlos Alberto González, 2007); studies were carried out in Asia (35%), Europe (30%), and USA (23%), and the positive association between nitrite intake and gastric cancer was found in most of them, proving that the intake of nitrite is a significant source of gastric cancer. In the book Baiguang and Ma Guozhong wrote, The Safety of Agriculture Product, large amount of animal tests show that no animal can survive from cancer after large amount of of nitrite intake. The chance of diagnosing cancer after long time of intaking small amount of nitrite is almost a hundred percent, also there is big chance to get gastric cancer after only one intake of a large amount of nitrite. Also experiment has prof that the nitrosamine formed due to intake of nitrite, through placenta and breast milk, can trigger offspring to get gastric cancer. (Baiguang, Ma Guozhong, 2007) 
+						<br><br>
+						Apart form resulting in gastric cancer, food with exceeding high percentage of nitrite is notorious to living organs. By oxidizing the Hyphemoglobin in human blood into Methemoglobin, nitrite in blood will cause it to lose ability to carry oxygen and result in a tissue hypoxia. 0.2-0.5 gram of intake can cause an immediate poisoning, and a 3 gram of intake can result in instant death. The average percent of nitrite in vegetable is 4mg/kg, 3mg/kg in meat, 5mg/kg in eggs, and 7mg/kg in pickled vegetables (2), highest among all categories of food mentioned. Normally people intake nitrite through food these food with a high nitrite percent, or some may mistakenly intake sodium nitrite, for industrial uses, as everyday salt, or drink water that nitrite is dissolved in.
+						<br><br>
+						Being in a country with the greatest population in the world, 680 thousand gastric cancer patients take half of the whole world’s patient population. This number has increasingly shown its severity and many research studies are inspired by it. A research team from the Beijing News conducted a research (3), showed that all out of 11 categories of pickled vegetables had nitrite percentage range from 1.5mg/kg to 14mg/kg (New Beijing News, 2016). More researches have been conducted considering different diet of Chinese people in different cities. For example, there was a study concerning a typical food in Shandong province called “Jiandan bing”, which contains considerable amount of nitrite, and researchers are holding pessimist view s on this matter because what all the datas and the studies showed.
+						<br><br>
+						However, this problem has not attracted enough notice by neither the society or the government. Being a four-million worth market, the production of pickled vegetable is a non-negligible part of China’s food market. And there is a lack of any product that can reduce the nitrite content in pickled vegetable or any other food that contains nitrite, which means that a totally blue sea is created for a pioneer to act first and open this market. Despite the positive social change it will bring, the existence of a nitrite-free pilled have the potential to generate huge amount of profit, rewarding the inventor of the first and best-qualified product. So as high school students, eager to promote positive social change, we don’t have enough ability or motivation to turn our research into a qualified product shortly, but we will continue our research, and the potential profit will help us in finding sponsor to this research, benefiting our future work.
+						<br><br>
+						
+						(1): https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4087738/#B18<br>
+						(2): https://baike.baidu.com/item/亚硝胺/7927107?fr=aladdin<br>
+						(3): http://paper.chinaso.com/detail/20160102/1000200032869521451716959698984090_1.html<br>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</html>

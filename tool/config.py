@@ -1,7 +1,8 @@
 
 IGEM_YEAR = "2017"
 TEAM_NAME = "HFLS_H2Z_Hangzhou"
-ABS_BASE = "src"
+ABS_BASE = "/home/rodlin/Desktop/aquamade/src"
+ABS_TOOL_BASE = "/home/rodlin/Desktop/aquamade/tool"
 
 PAGES = {
     "main": (ABS_BASE + "/main.html",           "Template:%s" % TEAM_NAME),
@@ -60,8 +61,4 @@ PAGES = {
     "engage": (ABS_BASE + "/sub/engage.html", "Team:%s/Engagement" % TEAM_NAME),
     "outreach": (ABS_BASE + "/sub/outreach.html",         "Team:%s/HP/Silver" % TEAM_NAME),
     "integrated": (ABS_BASE + "/sub/integrated.html",   "Team:%s/HP/Gold_Integrated" % TEAM_NAME),
-}
-
-UPLOADED = {
-    "/img/cover3.jpg": "http://2017.igem.org/wiki/images/a/a9/T--HFLS_H2Z_Hangzhou--img_cover3.jpg"
 }

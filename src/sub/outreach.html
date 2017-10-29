@@ -5,8 +5,17 @@
 			menu.setItem("hp");
 			
 			$(".page-outreach .show-more").click(function () {
-				$(this).siblings(".descr").addClass("expand");
-				$(this).remove();
+				var self = $(this);
+				
+				if (self.hasClass("expanded")) {
+					$(this).siblings(".descr").removeClass("expand");
+					$(this).html("Show less");
+				} else {
+					$(this).siblings(".descr").addClass("expand");
+					$(this).html("Show more");
+				}
+				
+				$(this).toggleClass("expanded");
 			});
 		});
 	</script>

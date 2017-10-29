@@ -8,6 +8,9 @@ import http.cookiejar
 from bs4 import BeautifulSoup
 
 import config
+import imgmap
+
+import requests
 
 def pair(name, value):
 	return http.cookiejar.Cookie(
@@ -52,6 +55,8 @@ def post(url, dat, cookie = GLOBAL_COOKIE):
 
 	return resp
 
+def postmulti(url, dat, cookie = GLOBAL_COOKIE):
+	return requests.post(url, files = dat, cookies = cookie).text
 
 def getEditToken(cookie = GLOBAL_COOKIE):
 	url = "http://" + config.IGEM_YEAR + ".igem.org/Team:" + config.TEAM_NAME + "?action=edit"
@@ -72,10 +77,71 @@ def upload(file, data, cookie = GLOBAL_COOKIE):
 		"wpUltimateParam": "1"
 	}
 
-	open("log.html", "w").write(post(url, dat, cookie).read().decode());
+	with open("log.html", "w") as fp:
+		fp.write(post(url, dat, cookie).read().decode());
 
-def uploadImage(file, cookie = GLOBAL_COOKIE):
-	url = "http://" + config.IGEM_YEAR + ".igem.org/Special:Upload"
-	dat = {
-		
+def saveImageMap():
+	with open(config.ABS_TOOL_BASE + "/imgmap.py", "w") as fp:
+		fp.write("UPLOADED = " + repr(imgmap.UPLOADED));
+
+# assuming fname is /img/.*
+def formatFileName(fname):
+	return "T--HFLS_H2Z_Hangzhou--img_" + fname[5:].replace("/", "_")
+
+def getFinalUrl(res):
+	bs = BeautifulSoup(res, "html5lib")
+	# print(bs.find(attrs = { "class": "fullMedia" }))
+	return list(bs.find(attrs = { "class": "fullMedia" }).children)[0]["href"]
+
+def getContentType(fname):
+	conttype = {
+		"jpg": "image/jpeg",
+		"png": "image/png"
 	}
+	
+	suf = fname[::-1].split(".")[0][::-1]
+	
+	if suf in conttype:
+		return conttype[suf]
+	else:
+		return "image/jpeg"
+
+# fname must be in the form "/img/.*"
+def uploadImage(fname, cookie = GLOBAL_COOKIE):
+	if fname in imgmap.UPLOADED:
+		print("image " + fname + " already in cache as " + imgmap.UPLOADED[fname])
+		return imgmap.UPLOADED[fname]
+	else:
+		# do the uploading
+		
+		with open(config.ABS_BASE + fname, "rb") as fp:
+			url = "http://" + config.IGEM_YEAR + ".igem.org/Special:Upload"
+			dat = {
+				"wpUploadFile": ("don't tell you", fp, getContentType(fname)), # fp.read(),
+				"wpDestFile": (None, formatFileName(fname)),
+				"wpUploadDescription": (None, ""),
+				
+				"wpLicense": (None, ""),
+				"wpWatchthis": (None, "1"),
+				"wpIgnoreWarning": (None, "1"),
+				"wpEditToken": (None, getEditToken(cookie)),
+				"wpUpload": (None, "Upload file"),
+				
+				"wpDestFileWarningAck": (None, ""),
+				"title": (None, "Special:Upload")
+			}
+			
+			print("uploading " + fname + " as " + formatFileName(fname))
+			res = postmulti(url, dat, cookie)
+			
+			with open("upload-img-log.html", "w") as fp:
+				fp.write(res);
+			
+			final = getFinalUrl(res)
+			
+			imgmap.UPLOADED[fname] = final
+			saveImageMap()
+			
+			print("finished " + final)
+			
+			return final

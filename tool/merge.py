@@ -19,7 +19,7 @@ def expand(path):
 	href_reg = re.compile(r"href=['\"]([^'\"]*)['\"]")
 	src_reg = re.compile(r"src=['\"]([^'\"]*)['\"]")
 	
-	img_reg = re.compile(r"/img/.*\.jpg")
+	img_reg = re.compile(r"/img/.*\.(jpg|png)")
 
 	css_reg = re.compile(r"<link[^>]*>")
 	script_reg = re.compile(r"<script[^>]*>[^<]*</script>")
@@ -85,10 +85,12 @@ def expand(path):
 		# print(img)
 		# print(config.UPLOADED)
 			
-		if img in config.UPLOADED:
-			return config.UPLOADED[img]
-		else:
-			return img
+		# if img in config.UPLOADED:
+		# 	return config.UPLOADED[img]
+		# else:
+		# 	return img
+			
+		return upload.uploadImage(img)
 
 		# with open(abs_base + img, "rb") as f:
 		# 	url = "data:image/jpeg;base64," + bytes.decode(base64.b64encode(f.read()))

@@ -258,3 +258,49 @@ table.ref-table td {
 	min-width: 2em;
 	vertical-align: top;
 }
+
+.img-name {
+	position: relative;
+	text-align: center;
+	color: rgb(100, 100, 100);
+
+	margin-top: -1rem;
+	margin-bottom: 1rem;
+
+	font-size: 1rem;
+}
+
+.active-img {
+	position: relative;
+
+	border-radius: 5px;
+}
+
+.active-img img {
+	width: 100%;
+	border-radius: 5px;
+}
+
+.active-img .white-shade {
+	position: absolute;
+	
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+
+	border-radius: 5px;
+
+	box-shadow: 0 0 10px white inset;
+}
+
+.active-img .control-layer {
+	position: absolute;
+	
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.active-img .control {
+	position: absolute;
+}

@@ -86,3 +86,12 @@
     color: #1274B5 !important;
     border-bottom: 2px solid #1274B5;
 }
+
+.atext .ref-block {
+    display: block;
+    padding: 1.5em;
+    background: rgba(0, 0, 0, 0.05);
+    border-left: 5px solid rgb(200, 200, 200);
+
+    color: rgb(70, 70, 70);
+}

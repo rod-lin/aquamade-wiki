@@ -1,0 +1,133 @@
+<html>
+	<head>
+		<script sync src="https://cdn.bootcss.com/mathjax/2.7.2/latest.js?config=TeX-AMS_HTML"></script>
+
+		<script type="text/x-mathjax-config">
+			MathJax.Ajax.config.path["mhchem"] = "https://cdn.bootcss.com/mathjax-mhchem/3.2.0";
+			MathJax.Hub.Config({
+				tex2jax: { inlineMath: [ [ "$", "$" ], [ "\\(", "\\)" ] ] },
+
+				TeX: {
+					extensions: [ "[mhchem]/mhchem.js" ]
+				} 
+			});
+		</script>
+	</head>
+
+	<script>
+		$(function () {
+			menu.reverse();
+			menu.setItem("project");
+		});
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="/css/text.css">
+
+	<style>
+		.page-overview .active-img .control {
+			width: 20%;
+			height: 16.5%;
+
+			cursor: pointer;
+		}
+
+		.page-overview .active-img .control:after {
+			position: absolute;
+
+			content: " ";
+			display: block;
+			width: 1rem;
+			height: 1rem;
+
+			background: #E74C3C;
+			border: 1px solid rgba(0, 0, 0, 0.08);
+
+			border-radius: 50%;
+
+			right: 0.5rem;
+			top: 0.5rem;
+
+			transition: background 0.3s;
+		}
+
+		.page-overview .active-img .control:hover:after {
+			background: #EB695B;
+		}
+
+		.page-overview .active-img .control:active:after {
+			background: #C0392B;
+		}
+
+		.page-overview .detail .detail-cont {
+			width: 25rem;
+			font-family: Brandon;
+			color: rgb(70, 70, 70);
+
+			font-size: 1.1em;
+		}
+	</style>
+
+	<script>
+	
+		$(function () {
+			var controls = $(".page-overview .control");
+			var popup = $(".page-overview .detail");
+
+			controls.each(function (i, dom) {
+				dom = $(dom);
+
+				dom.popup({
+					popup: popup[i],
+					on: "click",
+					scrollContext: $(".main.cont-wrap")[0],
+					lastResort: true,
+					hideOnScroll: true,
+
+					onShow: function () {
+						imgview.refresh();
+					}
+				});
+			});
+		});
+		
+	</script>
+
+	<div class="page-overview" style="font-family: Veneer;">
+		<div class="main-block fullscr main-title" style="font-size: 7rem; text-align: center;">
+			<div class="vcenter" style="line-height: 1;">
+				<span>Overview</span>
+			</div>
+		</div>
+
+		<div class="line-sep"></div>
+
+		<div class="block white-bg">
+			<div class="atext article article-font">
+				Welcome to the project of your beloved team: HFLS_H2Z_hangzhou! You should call our project Aquamade: aqua here means our project are all solution-based, and made shows our dedication to hand-on experience. 
+				Through our investigation and human practice, we decided on the main direction of our project, and our knowledge about the filed translated into our design which specifies goals to achieve. 
+				Our project includes three main biological aspect:Enzymes, Chassis selection, and Genetic Circuits. We then tested the our enzymes in real conditions: using Pickle extract from Qiumei Food Company. 
+				Click the pictures below to view further information.
+				<br><br>
+
+				<h1>Click on the links to see more details</h1>
+				<div class="active-img">
+					<img class="no-imgview" src="/img/overview/nav1.jpg"></img>
+					<div class="white-shade"></div>
+					<div class="control-layer">
+						<div class="control fake-link" data-href="#backg" style="top: 5.5%; left: 38%;"></div>
+
+						<div class="control fake-link" data-href="#design" style="top: 29%; left: 38%;"></div>
+
+						<div class="control fake-link" data-href="#enzyme" style="top: 53%; left: 3.5%;"></div>
+						<div class="control fake-link" data-href="#chassis" style="top: 53%; left: 38%;"></div>
+						<div class="control fake-link" data-href="#genecirc" style="top: 53%; left: 71.5%;"></div>
+
+						<div class="control fake-link" data-href="#perform" style="top: 77%; left: 38%;"></div>
+					</div>
+				</div>
+
+				<p></p>
+			</div>
+		</div>
+	</div>
+</html>

@@ -23,19 +23,24 @@
 		var geometry = new THREE.SphereGeometry(10, 36, 36);
 		var wireframe = new THREE.WireframeGeometry(geometry);
 		var material = new THREE.LineBasicMaterial({
-			color: 0xeeeeee,
+			color: 0xe3e3e3,
 			linewidth: 1,
 		});
+
 		var circle = new THREE.Line(wireframe, material);
 		scene.add(circle);
 		
 		camera.position.z = 10;
+
+		var initx = circle.rotation.x = Math.random() * 2 - 1;
+		var inity = circle.rotation.y = Math.random() * 2 - 1;
+		var initz = circle.rotation.z = Math.random() * 2 - 1;
 		
 		this.renders.push(function () {
 			var scroll = $(".main.cont-wrap").scrollTop();
-			circle.rotation.x = scroll / 1000;
-			circle.rotation.y = scroll / 1000;
-			circle.rotation.z = scroll / 2000;
+			circle.rotation.x = initx + scroll / 1000;
+			circle.rotation.y = inity + scroll / 1000;
+			circle.rotation.z = initz + scroll / 2000;
 		});
 		
 		this.scene = scene;
@@ -49,6 +54,14 @@
 
 	BGEffect.prototype = {};
 	
+	BGEffect.prototype.oneFrame = function () {
+		for (var i = 0; i < this.renders.length; i++) {
+			this.renders[i]();
+		}
+
+		this.renderer.render(this.scene, this.camera);
+	};
+	
 	BGEffect.prototype.start = function () {
 		var self = this;
 		
@@ -56,12 +69,8 @@
 			if (self.paused) return;
 			
 			requestAnimationFrame(animate);
-
-			for (var i = 0; i < self.renders.length; i++) {
-				self.renders[i]();
-			}
-
-			self.renderer.render(self.scene, self.camera);
+			
+			self.oneFrame();
 		};
 		
 		if (!self.paused) return;

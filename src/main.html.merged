@@ -223,6 +223,47 @@ a:hover {
 	background: rgb(70, 70, 70);
 	color: white !important;
 }
+
+.main.scroll-top-btn {
+	position: fixed;
+	bottom: 2rem;
+	left: 2rem;
+
+	z-index: 102;
+
+	width: 3em;
+	height: 3em;
+	line-height: 2.8em;
+	text-align: center;
+
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	background: rgb(100, 100, 100);
+	color: rgb(253, 253, 253);
+
+	border-radius: 4px;
+
+	box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+
+	cursor: pointer;
+
+	opacity: 0;
+	pointer-events: none;
+
+	transition: box-shadow 0.3s, opacity 0.3s;
+}
+
+.main.scroll-top-btn.show {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.main.scroll-top-btn:hover {
+	box-shadow: 0 5px 7px rgba(0, 0, 0, 0.3);
+}
+
+.main.scroll-top-btn:active {
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
 </style>
 		<style>a {
 	text-decoration: none !important;
@@ -236,6 +277,10 @@ h1, h2, h3, h4, h5 {
 .fullscr {
 	height: 100vh;
 	width: 100%;
+
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50% 50%;
 }
 
 .img {
@@ -259,6 +304,32 @@ h1, h2, h3, h4, h5 {
 	margin: 1rem 0;
 }
 
+.img.figure {
+	margin: 1rem 0;
+	max-width: 100%;
+	border-radius: 5px;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.code-block {
+	padding: 2rem;
+
+	font-family: Consolas, Ubuntu Mono, monospace;
+	border-radius: 5px;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	background: white;
+}
+
+table.frameless {
+	background: transparent !important;
+	border: 0 !important;
+}
+
+table.frameless td {
+	padding: 0 !important;
+	border: 0 !important;
+}
+
 .center {
 	width: auto !important;
 }
@@ -278,6 +349,10 @@ h1, h2, h3, h4, h5 {
 
 .wide.article {
 	width: 70rem;
+}
+
+.medium.article {
+	width: 60rem;
 }
 
 .article-font {
@@ -337,6 +412,108 @@ h1, h2, h3, h4, h5 {
 .quick-link:hover {
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.22);
 }
+
+.imgview {
+	position: relative;
+	cursor: pointer;
+
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.imgview .view-btn {
+	display: inline-block;
+
+	padding: 0.6em 1.2em;
+	border-radius: 3px;
+	border: 2px solid rgb(253, 253, 253);
+	color: rgb(253, 253, 253);
+
+	font-size: 1rem;
+	font-weight: bold;
+
+	cursor: pointer;
+	line-height: 1;
+
+	transition: color 0.2s, background 0.2s;
+}
+
+.imgview .view-btn:hover {
+	color: rgb(70, 70, 70);
+	background: rgb(253, 253, 253);
+}
+
+.imgview .shade {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	text-align: center;
+	border-radius: 5px;
+
+	height: 100%;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.3);
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.imgview:hover .shade {
+	opacity: 1;
+}
+
+.imgview-modal .wrap {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.imgview-modal img {
+	display: block;
+	border-radius: 3px;
+	width: 100%;
+}
+
+.imgview-modal .close-btn {
+	position: absolute;
+
+	top: -7px;
+	right: -7px;
+
+	width: 30px;
+	height: 30px;
+
+	line-height: 28px;
+	text-align: center;
+
+	border-radius: 3px;
+	cursor: pointer;
+
+	color: white;
+
+	background: #E74C3C;
+
+	box-shadow: 0 0 3px #E74C3C;
+
+	transition: background 0.2s;
+}
+
+.imgview-modal .close-btn:hover {
+	background: rgb(230, 91, 78);
+}
+
+.imgview-modal .close-btn:active {
+	background: #C0392B;
+}
+
+.imgview-modal .close-btn .icon {
+	margin-right: 0 !important;
+}
+
+.ref-table td {
+	min-width: 2em;
+	vertical-align: top;
+}
 </style>
 		<style>@charset "UTF-8";
 
@@ -366,7 +543,7 @@ h1, h2, h3, h4, h5 {
 }
 </style>
 
-		<script src='/Template:HFLS_H2Z_Hangzhou/src/main/js?action=raw&ctype=text/javascript'></script>
+		<script src='/Template:HFLS_H2Z_Hangzhou//home/rodlin/Desktop/aquamade/src/main/js?action=raw&ctype=text/javascript'></script>
 		
 		
 
@@ -397,17 +574,148 @@ h1, h2, h3, h4, h5 {
 
 	<script>
 		window.ADEBUG = window.location.hostname == "localhost";
+	</script>
+	
+	<script>
+		/* just for debug */
+		if (ADEBUG) {
+			var hash = window.location.hash.substring(1);
+			
+			var resp = $.ajax({
+				url: hash ? "sub/" + hash + ".html" : "sub/home.html",
+				async: false
+			});
 
-		$(document).ready(function () {
+			window.contWrap = $(resp.responseText);
+
+			$(function () {
+				$(".main.cont-wrap").append(window.contWrap);
+			});
+
+			window.onhashchange = function () {
+				window.location.reload(true);
+			};
+		}
+	</script>
+
+	<script>
+		$(function () {
 			// alert(Modernizr.csstransforms3d);
 			// if (Modernizr.csstransforms3d) {
 			// }
+
+			var wrap;
+
+			if (ADEBUG) {
+				wrap = window.contWrap;
+			} else {
+				wrap = $(".main.cont-wrap");
+			}
+
+			window.imgview = {};
+			imgview.refresh = function (init) {
+				// image viewer
+				wrap.find("img").not(".no-imgview").each(function (i, dom) {
+					dom = $(dom);
+
+					var src = dom.attr("src");
+
+					var img = new Image();
+
+					img.src = src;
+					img.onload = function () {
+						if (init) {
+							var imgwrap = $("<div class='imgview'> \
+								<div class='shade'> \
+									<div class='view-btn'>View</div> \
+								</div> \
+							</div>");
+
+							var modal = $("<div class='ui modal imgview-modal'> \
+								<div class='wrap'> \
+									<img></img> \
+									<div class='close-btn'><i class='cancel icon'></i></div> \
+								</div> \
+							</div>");
+
+							var shade = imgwrap.find(".shade");
+
+							dom.after(imgwrap);
+							imgwrap.prepend(dom);
+
+							modal.find(".close-btn").click(function () {
+								modal.modal("hide");
+							});
+
+							imgwrap.click(function () {
+								var bigimg = modal.find("img");
+
+								bigimg.attr("src", src);
+
+								modal.modal("show");
+							});
+						} else {
+							var shade = dom.siblings(".shade");
+						}
+
+						shade.css({
+							display: dom.css("display"),
+							margin: dom.css("margin"),
+							height: dom.css("height"),
+							width: dom.css("width"),
+							"line-height": dom.css("height"),
+						});
+					};
+				});
+			};
+
+			imgview.refresh(true);
+
+			$(window).resize(function () {
+				imgview.refresh();
+			});
+
+			var scrollToTop = (function () {
+				var a = 3;
+				var p = 2;
+				var delta = 1;
+
+				return function () {
+					var top = $(".main.cont-wrap").scrollTop();
+
+					if (top < 3) {
+						$(".main.cont-wrap").scrollTop(0);
+						return;
+					}
+
+					var x = Math.pow(top / a, 1 / p);
+					var next = Math.abs(a * Math.pow(x - delta, p));
+
+					$(".main.cont-wrap").scrollTop(next);
+					
+					setTimeout(function () {
+						scrollToTop();
+					}, 24);
+				};
+			})();
+
+			$(".main.scroll-top-btn").click(function () {
+				scrollToTop();
+			});
 			
 			$(".main.cont-wrap").scroll(function () {
-				if ($(".main.cont-wrap").scrollTop() > 5) {
+				var top = $(".main.cont-wrap").scrollTop();
+
+				if (top > 5) {
 					$(".main.nav").addClass("floated");
 				} else {
 					$(".main.nav").removeClass("floated");
+				}
+
+				if (top > 500) {
+					$(".main.scroll-top-btn").addClass("show");
+				} else {
+					$(".main.scroll-top-btn").removeClass("show");
 				}
 			});
 			
@@ -507,38 +815,26 @@ h1, h2, h3, h4, h5 {
 			
 			var bgeff = new BGEffect(".bg-layer");
 			
+			// if (ADEBUG)
+			//	bgeff.oneFrame();
+			// else
+			
 			bgeff.start();
 		});
-	</script>
-
-	<script>
-		/* just for debug */
-		if (ADEBUG) {
-			var hash = window.location.hash.substring(1);
-			
-			$(document).ready(function () {
-				$.ajax({
-					url: hash ? "sub/" + hash + ".html" : "sub/home.html",
-					success: function (dat) {
-						$(".main.cont-wrap").append(dat);
-					}
-				});		
-			});
-		}
 	</script>
 
 	<div class="main view">
 		<div class="main nav">
 			<a class="logo-name">Aquamade</a>
 			<span class="link-set">
-				<a href="/Team:HFLS_H2Z_Hangzhou" class="nav link-item home">Home</a>
+				<a href='/Team:HFLS_H2Z_Hangzhou' class="nav link-item home">Home</a>
 				
 				<span class="nav link-item achiev">
 					<i class="angle down icon"></i>Achievement
 					<div class="expand-item-set-cont">
 						<div class="expand-item-set">
-							<a class="sub-link-item">Parts</a>
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Collaborations">Collaborations</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/sub/parts'>Parts</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/Collaborations'>Collaborations</a>
 						</div>
 					</div>
 				</span>
@@ -547,12 +843,12 @@ h1, h2, h3, h4, h5 {
 					<i class="angle down icon"></i>Project
 					<div class="expand-item-set-cont">
 						<div class="expand-item-set">
-							<a class="sub-link-item">Overview</a>
-							<a class="sub-link-item">Background</a>
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Applied_Design">Design</a>
-							<a class="sub-link-item">Enzyme</a>
-							<a class="sub-link-item">Generic Circuits</a>
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Demonstrate">Performance</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/sub/overview'>Overview</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/sub/backg'>Background</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/Applied_Design'>Design</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/sub/enzyme'>Enzyme</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/sub/genecirc'>Generic Circuits</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/Demonstrate'>Performance</a>
 						</div>
 					</div>
 				</span>
@@ -561,20 +857,20 @@ h1, h2, h3, h4, h5 {
 					<i class="angle down icon"></i>Modeling
 					<div class="expand-item-set-cont">
 						<div class="expand-item-set">
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Model">Models</a>
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Software">Software</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/Model'>Models</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/Software'>Software</a>
 						</div>
 					</div>
 				</span>
 				
-				<a href="/Team:HFLS_H2Z_Hangzhou" href="/Team:HFLS_H2Z_Hangzhou/Safety" class="nav link-item safety">Safety</a>
+				<a href='/Team:HFLS_H2Z_Hangzhou/Safety' class="nav link-item safety">Safety</a>
 				
 				<span class="nav link-item team">
 					<i class="angle down icon"></i>Team
 					<div class="expand-item-set-cont">
 						<div class="expand-item-set">
-							<a class="sub-link-item">Member</a>
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Attributions">Attribution</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/sub/member'>Member</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/Attributions'>Attribution</a>
 						</div>
 					</div>
 				</span>
@@ -583,9 +879,9 @@ h1, h2, h3, h4, h5 {
 					<i class="angle down icon"></i>Notebook
 					<div class="expand-item-set-cont">
 						<div class="expand-item-set">
-							<a class="sub-link-item">Experiments</a>
-							<a class="sub-link-item">Protocols</a>
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/InterLab">Interlab</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/sub/experim'>Experiments</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/sub/protocol'>Protocols</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/InterLab'>Interlab</a>
 						</div>
 					</div>
 				</span>
@@ -594,8 +890,8 @@ h1, h2, h3, h4, h5 {
 					<i class="angle down icon"></i>Human Practices
 					<div class="expand-item-set-cont">
 						<div class="expand-item-set">
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/HP/Silver">Public Outreach</a>
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/HP/Gold_Integrated">Integrated</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/HP/Silver'>Public Outreach</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/HP/Gold_Integrated'>Integrated</a>
 						</div>
 					</div>
 				</span>
@@ -604,6 +900,8 @@ h1, h2, h3, h4, h5 {
 
 		<div class="bg-layer"></div>
 		
+		<div class="main scroll-top-btn"><i class="fitted chevron up icon"></i></div>
+
 		<div class="main cont-wrap">
 
 	<!-- Concat with content -->

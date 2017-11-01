@@ -41,17 +41,161 @@
 
 	<script>
 		window.ADEBUG = window.location.hostname == "localhost";
+	</script>
+	
+	<script>
+		/* just for debug */
+		if (ADEBUG) {
+			var hash = window.location.hash.substring(1);
+			
+			var resp = $.ajax({
+				url: hash ? "sub/" + hash + ".html" : "sub/home.html",
+				async: false
+			});
 
-		$(document).ready(function () {
+			window.contWrap = $(resp.responseText);
+
+			$(function () {
+				$(".main.cont-wrap").append(window.contWrap);
+			});
+
+			window.onhashchange = function () {
+				window.location.reload(true);
+			};
+		}
+	</script>
+
+	<script>
+		$(function () {
 			// alert(Modernizr.csstransforms3d);
 			// if (Modernizr.csstransforms3d) {
 			// }
+
+			$(".fake-link").each(function (i, dom) {
+				dom = $(dom);
+
+				dom.css("cursor", "pointer");
+				dom.click(function () {
+					if (dom.data("href")) {
+						window.location = dom.data("href");
+					}
+				});
+			});
+
+			$(".main.cont-wrap").append($(".main.bottom-bar"));
+
+			var wrap;
+
+			if (ADEBUG) {
+				wrap = window.contWrap;
+			} else {
+				wrap = $(".main.cont-wrap");
+			}
+
+			window.imgview = {};
+			imgview.refresh = function (init) {
+				// image viewer
+				wrap.find("img").not(".no-imgview").each(function (i, dom) {
+					dom = $(dom);
+
+					var src = dom.attr("src");
+
+					var img = new Image();
+
+					img.src = src;
+					img.onload = function () {
+						if (init) {
+							var imgwrap = $("<div class='imgview'> \
+								<div class='shade'> \
+									<div class='view-btn'>View</div> \
+								</div> \
+							</div>");
+
+							var modal = $("<div class='ui modal imgview-modal'> \
+								<div class='wrap'> \
+									<img></img> \
+									<div class='close-btn'><i class='cancel icon'></i></div> \
+								</div> \
+							</div>");
+
+							var shade = imgwrap.find(".shade");
+
+							dom.after(imgwrap);
+							imgwrap.prepend(dom);
+
+							modal.find(".close-btn").click(function () {
+								modal.modal("hide");
+							});
+
+							imgwrap.click(function () {
+								var bigimg = modal.find("img");
+
+								bigimg.attr("src", src);
+
+								modal.modal("show");
+							});
+						} else {
+							var shade = dom.siblings(".shade");
+						}
+
+						shade.css({
+							display: dom.css("display"),
+							margin: dom.css("margin"),
+							height: dom.css("height"),
+							width: dom.css("width"),
+							"line-height": dom.css("height"),
+						});
+					};
+				});
+			};
+
+			imgview.refresh(true);
+
+			$(window).resize(function () {
+				imgview.refresh();
+			});
+
+			var scrollToTop = (function () {
+				var a = 3;
+				var p = 2;
+				var delta = 1;
+
+				return function () {
+					var top = $(".main.cont-wrap").scrollTop();
+
+					if (top < 3) {
+						$(".main.cont-wrap").scrollTop(0);
+						return;
+					}
+
+					var x = Math.pow(top / a, 1 / p);
+					var next = Math.abs(a * Math.pow(x - delta, p));
+
+					$(".main.cont-wrap").scrollTop(next);
+					
+					setTimeout(function () {
+						scrollToTop();
+					}, 24);
+				};
+			})();
+
+			$(".main.scroll-top-btn").click(function () {
+				scrollToTop();
+			});
 			
 			$(".main.cont-wrap").scroll(function () {
-				if ($(".main.cont-wrap").scrollTop() > 5) {
+				var top = $(".main.cont-wrap").scrollTop();
+
+				if (top > 5) {
 					$(".main.nav").addClass("floated");
 				} else {
 					$(".main.nav").removeClass("floated");
+				}
+
+				if (top > 500) {
+					$(".main.scroll-top-btn").addClass("show");
+				} else {
+					$(".main.scroll-top-btn").removeClass("show");
 				}
 			});
 			
@@ -151,38 +295,26 @@
 			
 			var bgeff = new BGEffect(".bg-layer");
 			
+			// if (ADEBUG)
+			//	bgeff.oneFrame();
+			// else
+			
 			bgeff.start();
 		});
-	</script>
-
-	<script>
-		/* just for debug */
-		if (ADEBUG) {
-			var hash = window.location.hash.substring(1);
-			
-			$(document).ready(function () {
-				$.ajax({
-					url: hash ? "sub/" + hash + ".html" : "sub/home.html",
-					success: function (dat) {
-						$(".main.cont-wrap").append(dat);
-					}
-				});		
-			});
-		}
 	</script>
 
 	<div class="main view">
 		<div class="main nav">
 			<a class="logo-name">Aquamade</a>
 			<span class="link-set">
-				<a href="/Team:HFLS_H2Z_Hangzhou" class="nav link-item home">Home</a>
+				<a href="#home" class="nav link-item home">Home</a>
 				
 				<span class="nav link-item achiev">
 					<i class="angle down icon"></i>Achievement
 					<div class="expand-item-set-cont">
 						<div class="expand-item-set">
-							<a class="sub-link-item">Parts</a>
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Collaborations">Collaborations</a>
+							<a class="sub-link-item" href="#parts">Parts</a>
+							<a class="sub-link-item" href="#collab">Collaborations</a>
 						</div>
 					</div>
 				</span>
@@ -191,12 +323,12 @@
 					<i class="angle down icon"></i>Project
 					<div class="expand-item-set-cont">
 						<div class="expand-item-set">
-							<a class="sub-link-item">Overview</a>
-							<a class="sub-link-item">Background</a>
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Applied_Design">Design</a>
-							<a class="sub-link-item">Enzyme</a>
-							<a class="sub-link-item">Generic Circuits</a>
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Demonstrate">Performance</a>
+							<a class="sub-link-item" href="#overview">Overview</a>
+							<a class="sub-link-item" href="#backg">Background</a>
+							<a class="sub-link-item" href="#design">Design</a>
+							<a class="sub-link-item" href="#enzyme">Enzyme</a>
+							<a class="sub-link-item" href="#genecirc">Generic Circuits</a>
+							<a class="sub-link-item" href="#perform">Performance</a>
 						</div>
 					</div>
 				</span>
@@ -205,20 +337,20 @@
 					<i class="angle down icon"></i>Modeling
 					<div class="expand-item-set-cont">
 						<div class="expand-item-set">
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Model">Models</a>
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Software">Software</a>
+							<a class="sub-link-item" href="#model">Models</a>
+							<a class="sub-link-item" href="#software">Software</a>
 						</div>
 					</div>
 				</span>
 				
-				<a href="/Team:HFLS_H2Z_Hangzhou" href="/Team:HFLS_H2Z_Hangzhou/Safety" class="nav link-item safety">Safety</a>
+				<a href="#safety" class="nav link-item safety">Safety</a>
 				
 				<span class="nav link-item team">
 					<i class="angle down icon"></i>Team
 					<div class="expand-item-set-cont">
 						<div class="expand-item-set">
-							<a class="sub-link-item">Member</a>
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/Attributions">Attribution</a>
+							<a class="sub-link-item" href="#member">Member</a>
+							<a class="sub-link-item" href="#attrib">Attribution</a>
 						</div>
 					</div>
 				</span>
@@ -227,9 +359,9 @@
 					<i class="angle down icon"></i>Notebook
 					<div class="expand-item-set-cont">
 						<div class="expand-item-set">
-							<a class="sub-link-item">Experiments</a>
-							<a class="sub-link-item">Protocols</a>
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/InterLab">Interlab</a>
+							<a class="sub-link-item" href="#experim">Experiments</a>
+							<a class="sub-link-item" href="#protocol">Protocols</a>
+							<a class="sub-link-item" href="#interlab">Interlab</a>
 						</div>
 					</div>
 				</span>
@@ -238,16 +370,103 @@
 					<i class="angle down icon"></i>Human Practices
 					<div class="expand-item-set-cont">
 						<div class="expand-item-set">
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/HP/Silver">Public Outreach</a>
-							<a class="sub-link-item" href="/Team:HFLS_H2Z_Hangzhou/HP/Gold_Integrated">Integrated</a>
+							<a class="sub-link-item" href="#outreach">Public Outreach</a>
+							<a class="sub-link-item" href="#integrated">Integrated</a>
 						</div>
 					</div>
 				</span>
 			</span>
 		</div>
 
+		<div class="main bottom-bar">
+			<div class="line-sep"></div>
+			<div class="block black-bg">
+				<div class="wide article article-font" style="color: rgb(253, 253, 253);">
+					<h2><i data-href="#attrib" class="fake-link linkify icon"></i>Sponsors</h2>
+					<div>
+						<div class="sponsor-link fake-link" data-href="" style="background-image: url('/img/attrib/logo1.jpg');"></div>
+						<div class="sponsor-link fake-link" style="background-image: url('/img/attrib/logo2.jpg');"></div>
+						<div class="sponsor-link fake-link" style="background-image: url('/img/attrib/logo3.jpg');"></div>
+						<div class="sponsor-link fake-link" style="background-image: url('/img/attrib/logo4.jpg');"></div>
+						<div class="sponsor-link fake-link" style="background-image: url('/img/attrib/logo5.jpg');"></div>
+					</div>
+					<br>
+
+					<h2><i data-href="#member" class="fake-link linkify icon"></i>Team Members</h2>
+					<div style="font-family: Veneer;">
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/img/member/canal.jpg');"></div>
+							Jianan Li
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/img/member/sunny.jpg');"></div>
+							Qingrui Sun
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/img/member/yiming.jpg');"></div>
+							Yiming Rong
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/img/member/jiayue.jpg');"></div>
+							Jiayue Guo
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/img/member/annie.jpg');"></div>
+							Zhiyuan Lu
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/img/member/meiqi.jpg');"></div>
+							Meiqi Yuan
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/img/member/rod.jpg');"></div>
+							Zhengyao Lin
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/img/member/eva.jpg');"></div>
+							Caiyi Feng
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/img/member/shuyun.jpg');"></div>
+							Shuyun Zhang
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/img/member/daniel.jpg');"></div>
+							Tenghao Huang
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/img/member/sam.jpg');"></div>
+							Yining Huang
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/img/member/ziyue.jpg');"></div>
+							Ziyue Li
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/img/member/yanyue.jpg');"></div>
+							Yanyue Zhu
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<div class="bg-layer"></div>
 		
+		<div class="main scroll-top-btn"><i class="fitted chevron up icon"></i></div>
+
 		<div class="main cont-wrap">
 
 	<!-- Concat with content -->

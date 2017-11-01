@@ -21,12 +21,17 @@ def expand(path):
 	
 	img_reg = re.compile(r"/img/.*\.(jpg|png)")
 
+	link_reg = re.compile(r"href=['\"]#([^'\"]*)['\"]")
+
 	css_reg = re.compile(r"<link[^>]*>")
 	script_reg = re.compile(r"<script[^>]*>[^<]*</script>")
 
 	base = os.path.dirname(path)
 	file_name = path[len(base) + 1:].split(".")[0]
 	abs_base = config.ABS_BASE
+
+	def get_path(url):
+		return url.split("?")[0]
 
 	def rep_css(m):
 		tag = m.group(0)
@@ -37,9 +42,9 @@ def expand(path):
 
 			if href[:4] != "http":
 				if href[0] == "/":
-					path = abs_base + href
+					path = abs_base + get_path(href)
 				else:
-					path = base + "/" + href
+					path = base + "/" + get_path(href)
 
 				with open(path) as f:
 					return "<style>" + f.read() + "</style>"
@@ -63,9 +68,9 @@ def expand(path):
 
 			if js[:4] != "http":
 				if js[0] == "/":
-					path = abs_base + js
+					path = abs_base + get_path(js)
 				else:
-					path = base + "/" + js
+					path = base + "/" + get_path(js)
 
 				with open(path) as f:
 					alljs += ";" + f.read() + ";"
@@ -80,26 +85,21 @@ def expand(path):
 		return tag
 		
 	def rep_img(m):
-		img = m.group(0)
-		
-		# print(img)
-		# print(config.UPLOADED)
-			
-		# if img in config.UPLOADED:
-		# 	return config.UPLOADED[img]
-		# else:
-		# 	return img
-			
+		img = m.group(0)	
 		return upload.uploadImage(img)
 
-		# with open(abs_base + img, "rb") as f:
-		# 	url = "data:image/jpeg;base64," + bytes.decode(base64.b64encode(f.read()))
-		# 	# print(url[:100])
-		# 	return url
+	def rep_link(m):
+		name = m.group(1)
+
+		if name in config.PAGES:
+			return "href='""/" + config.PAGES[name][1] + "'"
+		else:
+			raise Exception("cannot find page " + name)
 
 	cont = css_reg.sub(rep_css, cont)
 	cont = script_reg.sub(rep_js, cont)
 	cont = img_reg.sub(rep_img, cont)
+	cont = link_reg.sub(rep_link, cont)
 
 	# print(cont)
 

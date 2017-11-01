@@ -3,46 +3,12 @@
 		$(function () {
 			menu.reverse();
 			menu.setItem("hp");
-			
-			$(".page-integ .float-menu").sticky({
-				scrollContext: $(".main.cont-wrap"),
-				context: $(".page-integ"),
-				offset: $(".main.nav").outerHeight(true)
-			});
-			
-			function showPassage(name) {
-				$(".page-integ .passage.shown").removeClass("shown");
-				$(".page-integ .passage.passage-" + name).addClass("shown");
-			}
-			
-			function setUniqueActive(dom) {
-				$(dom).siblings(".active").removeClass("active");
-				$(dom).addClass("active");
-			}
-			
-			$(".page-integ .passlink").each(function (i, dom) {
-				dom = $(dom);
-				
-				dom.click(function () {
-					var passage = dom.data("passage"); 
-					
-					if (passage)
-						showPassage(passage);
-				
-					setUniqueActive(dom);
-					
-					$(".page-integ .passlink").each(function (i, dom) {
-						dom = $(dom);
-						
-						if (dom.data("passage") == passage) {
-							setUniqueActive(dom);
-						}
-					});
-				});
-			});
 		});
 	</script>
-	<div class="page-integ" style="font-family: Veneer;">
+
+	<script src="/js/comsec.js?v=2"></script>
+
+	<div class="page-integ comsec-main" style="font-family: Veneer;">
 		<div class="main-block fullscr main-title" style="font-size: 7rem; text-align: center;">
 			<div class="vcenter" style="line-height: 1;">
 				<span>Human Practice</span><br>
@@ -51,12 +17,27 @@
 		</div>
 		
 		<div class="line-sep"></div>
-		
+
 		<div class="block white-bg">
+			<h1>Overview</h1>
+			<div class="article article-font">
+				From our research, we found out all the plants tend to concentrate nitrate during their vegetation process. During fermentation process of pickle production, microbes and the nitrate reductase will convert nitrate into nitrite. After ingested by our digestive systems, nitrite will combined with the amine in our bodies, will resulting production of nitrite amine. Medical studies indicated in recent years that nitrosamine is a strong carcinogen. Also, nitrite is the cause of methemoglobinemia, which lead to tissue hypoxia and cause vasodilation and lower blood pressure.
+				To invest further into the matter, we conducted multiple integrated human practices.
+			</div>
+		</div>
+
+		<div class="line-sep"></div>
+		
+		<div class="block">
 			<h1>Quick Menu</h1>
-			<div class="quick-link passlink" data-passage="foodadmin" style="background-image: url('/img/hp/foodadmin1.jpg');">Food Admin</div>
-			<div class="quick-link passlink" data-passage="zjuint" style="background-image: url('/img/hp/zjuint1.jpg');">ZJU Interview</div>
-			<div class="quick-link passlink" data-passage="busi" style="background-image: url('/img/hp/busi1.jpg');">Business study</div>
+			<div class="article" style="padding-left: 3rem;">
+				<div class="quick-link passlink" data-passage="zeccc" style="background-image: url('/img/hp/zeccc1.jpg');">Visit to ZECCC</div>
+				<div class="quick-link passlink" data-passage="foodadmin" style="background-image: url('/img/hp/foodadmin1.jpg');">Food Admin</div>
+				<div class="quick-link passlink" data-passage="qiumei" style="background-image: url('/img/hp/qiumei1.jpg');">Qiumei Food CO</div>
+				<div class="quick-link passlink" data-passage="qiumeilab" style="background-image: url('/img/hp/qiumeilab2.jpg');">Qiumei Lab</div>
+				<div class="quick-link passlink" data-passage="zjuint" style="background-image: url('/img/hp/zjuint1.jpg');">ZJU Interview</div>
+				<div class="quick-link passlink" data-passage="busi" style="background-image: url('/img/hp/busi1.jpg');">Business study</div>
+			</div>
 		</div>
 		
 		<div class="line-sep"></div>
@@ -96,14 +77,29 @@
 				</div> -->
 				<div style="position: absolute; left: 0; top: 0;">
 					<div class="ui secondary vertical menu float-menu sticky">
-						<a class="active item passlink" data-passage="foodadmin">Food Administration</a>
+						<a class="active item passlink" data-passage="zeccc">Visit to ZECCC</a>
+						<a class="item passlink" data-passage="foodadmin">Food Administration</a>
+						<a class="item passlink" data-passage="qiumei">Qiumei Food CO</a>
+						<a class="item passlink" data-passage="qiumeilab">Qiumei Lab</a>
 						<a class="item passlink" data-passage="zjuint">ZJU Interview</a>
 						<a class="item passlink" data-passage="busi">Business Study</a>
 					</div>
 				</div>
 				
 				<div class="article-cont">
-					<div class="passage passage-foodadmin shown">
+					<div class="passage passage-zeccc shown">
+						<h2 style="color: rgb(150, 150, 150);">July 11th, 2017</h2>
+						<h1>Visit to Zhejiang Zhejiang Environment Contamination Control Center</h1>
+
+						We came to Zhejiang Environment Contamination Control Center. Here are the best equipments in Zhejiang province. The nitrite concentration is one of the important indication of water contamination; here, we can gain access to expert suggestion and equipment.
+						The researchers and scholars took the demands our team had, and they were willing to provide us the methods to examine nitrite. Nitrite reacts with 4-aminobenzenesulfonic acid in weak acidic media to produce 4-sulfobenzenediazonium, which reacted with N′- ( naphthalenyl) ethane-1 ,2-diamine hydrochloride to produce a red diazene compound , the red compound was detected by spectrophotometer. According to the methods researches offered to us, the calibration graph for aqueous procedure was obtained by plotting absorbance values at 533 nm against nitrite concentration.
+						Therefore we could receive very precise experimental data through relatively convenient laboratory operation. The laboratory trip is one of the most important moments of our HP. With it, our work of the experiment is transitioned from conception to practical experience.
+					
+						<img class="framed img" src="/img/hp/zeccc1.jpg"></img>
+					</div>
+
+					<div class="passage passage-foodadmin">
+						<h2 style="color: rgb(150, 150, 150);">July 14th, 2017</h2>
 						<h1>The Visit to Zhejiang Food and Drug Administration</h1>
 						
 						With many concerns about the regulation of food processing using synthetic biology materials, Jianan Li from team HFLS_H2Z_hangzhou and Junbo Yang from team ZJU-China contacted Dr.Jin at Zhejiang Food and Drug Administration. He introduced the process of regulation: by scrutinizing the raw materials and production process, quality control specialists predict the possible impurities in the final product, and then set specific examining procedures and standards.
@@ -119,7 +115,48 @@
 						<img class="framed img" src="/img/hp/foodadmin2.jpg"></img>
 					</div>
 					
+					<div class="passage passage-qiumei">
+						<h2 style="color: rgb(150, 150, 150);">July 16th, 2017</h2>
+						<h1>Visit to Qiumei Food CO, .Ltd</h1>
+
+						As we have seen the dangers of nitrite to human beings, our team finally decided to decompose the nitrite using our design. Our survey revealed that the concentration of nitrite is generally higher in the pickled products. Therefore, we contacted with the Zhejiang qiumei food CO,LTD, which is the leading enterprise of Zhejiang province. Its pickle products once won the “The best agricultural products”, rewarded by the Zhejiang Department of Agriculture.
+						We were invited to the headquarters of Zhejiang Qiumei Food CO,LTD, and visited their integrated modern product shop.
+						After comprehending the idea of our experiment, the boss of the company told us that this is a feasible method, and she is looking forward to a further and deeper cooperation.
+
+						<img class="framed img" src="/img/hp/qiumei1.jpg"></img>
+
+						We also formed a strong partnership, and obtained major sponsorship which supported our project. SHOUT FOR QIUMEI FOOD!
+						Several lab assistants introduced to us by the boss promised to give us further technical support.
+
+						<img class="framed img" src="/img/hp/qiumei2.jpg"></img>
+						<img class="framed img" src="/img/hp/qiumei3.jpg"></img>
+						<img class="framed img" src="/img/hp/qiumei4.jpg"></img>
+						<img class="framed img" src="/img/hp/qiumei5.jpg"></img>
+						<img class="framed img" src="/img/hp/qiumei6.jpg"></img>
+					</div>
+
+					<div class="passage passage-qiumeilab">
+						<h2 style="color: rgb(150, 150, 150);">July 18th - 22nd, 2017</h2>
+						<h1>Visit to Qiumei's Lab</h1>
+
+						We came to the lab in  Center of Qiumei Food CO,LTD, and had a discussion on several issues in the pickle’s production process. Knowing that under the enforcement of the Food Safety Law, there is no nitrite exceeded pickle products on market anymore. We obtained the concentration curve of nitrite(during the producing process).
+						<br><br>
+						According to the chief engineer, we knew that the ultimate pickled products would be in accordance with the existing food safety standard. So we had to change our experiment goal—final chassis will be B.Substilis. Luckily, we found out that although the nitrite level in pickles is below the standard, the degrading process is time-consuming, thus it is still very useful to develop enzymes to decompose the nitrite and accelerate the producing speed.
+					
+						<img class="framed img" src="/img/hp/qiumeilab1.jpg"></img>
+
+						<h1>Second visit to Qiumei's Lab</h1>
+						
+						We went to the laboratory again for farther understanding. We realized that the peak period of the concentration of nitrite is 4 to 9 days, and then it decompose naturally as inverse function form. Under the regular production process, the flavor of pickles is as same as the final product in 13 days; however, because of the excessive nitrite, the pickles cannot be listed on the market. Our method, of which our enzyme could digest efficiently, which brings no harmful effects, is explained to the engineer. The chief engineer is amazed by our product. After applying our product, the production cycle of the pickles is cut down from more than 50 days to within 15 days.
+						<br><br>
+
+						We also learnt that the bacteria this company utilizes during the pickling process would spontaneously convert nitrate to nitrite, which ulteriorly embodies the significance of the purpose of our work.
+					
+						<img class="framed img" src="/img/hp/qiumeilab2.jpg"></img>
+					</div>
+
 					<div class="passage passage-zjuint">
+						<h2 style="color: rgb(150, 150, 150);">July 3rd, 2017</h2>
 						<h1>Interview with Professor from Zhejiang University</h1>
 						
 						We conducted an interview with Hu Xiaoyun, the professor at Zhejiang University, about her opinions on synthetic biology and biosafety. Professor Hu started to pay close attention to the development of synthetic biology at an early stage, and she wrote a proposal to raise the awareness for this area. As a professor from the Faculty of Medicine, most of her thoughts and concerns were about mammals, such as genetic editing of embryos and in vivo experiments. She also underlined the potential risk of biological weapon, whose effect would be hugely disastrous for the whole society.
@@ -148,13 +185,17 @@
 						4. How the new chemical created by the team, which can reduce nitrite.
 						<br><br>
 						During the 12th International Gastric Cancer Congress in 20-23 April 2017, a number has been revealed—650 thousand—which is the total number of gastric cancer patient in China in the year 2017. Gastric cancer, also known as stomach cancer, is a cancer that develops from the lining of stomach and may spread to other part of the body. After the spreading, gastric cancer are usually difficult to cure, however, few symptoms can be caused before the spreading of gastric cancer, which contributes to an overall death rate of 0.28 (American Cancer Society, 2017). Though the reasons of having gastric cancer remain puzzle, there has been studies that  relate having gastric cancer to exceeding amount of nitrosamine, due to intaking nitrite. In normal stomach acid condition nitrite can react with secondary amine and nitrosamine is the product formed inside of human body.
-						<br><br>
+
+						<img class="framed img" style="height: 30rem; width: auto;" src="/img/hp/busi3.png"></img>
+
 						Paula Jakszyn and Carlos Alberto González’s case-control study (1) have found a positive association of nitrite and gastric cancer (Paula Jakszyn, Carlos Alberto González, 2007); studies were carried out in Asia (35%), Europe (30%), and USA (23%), and the positive association between nitrite intake and gastric cancer was found in most of them, proving that the intake of nitrite is a significant source of gastric cancer. In the book Baiguang and Ma Guozhong wrote, The Safety of Agriculture Product, large amount of animal tests show that no animal can survive from cancer after large amount of of nitrite intake. The chance of diagnosing cancer after long time of intaking small amount of nitrite is almost a hundred percent, also there is big chance to get gastric cancer after only one intake of a large amount of nitrite. Also experiment has prof that the nitrosamine formed due to intake of nitrite, through placenta and breast milk, can trigger offspring to get gastric cancer. (Baiguang, Ma Guozhong, 2007) 
 						<br><br>
 						Apart form resulting in gastric cancer, food with exceeding high percentage of nitrite is notorious to living organs. By oxidizing the Hyphemoglobin in human blood into Methemoglobin, nitrite in blood will cause it to lose ability to carry oxygen and result in a tissue hypoxia. 0.2-0.5 gram of intake can cause an immediate poisoning, and a 3 gram of intake can result in instant death. The average percent of nitrite in vegetable is 4mg/kg, 3mg/kg in meat, 5mg/kg in eggs, and 7mg/kg in pickled vegetables (2), highest among all categories of food mentioned. Normally people intake nitrite through food these food with a high nitrite percent, or some may mistakenly intake sodium nitrite, for industrial uses, as everyday salt, or drink water that nitrite is dissolved in.
 						<br><br>
 						Being in a country with the greatest population in the world, 680 thousand gastric cancer patients take half of the whole world’s patient population. This number has increasingly shown its severity and many research studies are inspired by it. A research team from the Beijing News conducted a research (3), showed that all out of 11 categories of pickled vegetables had nitrite percentage range from 1.5mg/kg to 14mg/kg (New Beijing News, 2016). More researches have been conducted considering different diet of Chinese people in different cities. For example, there was a study concerning a typical food in Shandong province called “Jiandan bing”, which contains considerable amount of nitrite, and researchers are holding pessimist view s on this matter because what all the datas and the studies showed.
-						<br><br>
+
+						<img class="framed img" style="height: 30rem; width: auto;" src="/img/hp/busi2.png"></img>
+
 						However, this problem has not attracted enough notice by neither the society or the government. Being a four-million worth market, the production of pickled vegetable is a non-negligible part of China’s food market. And there is a lack of any product that can reduce the nitrite content in pickled vegetable or any other food that contains nitrite, which means that a totally blue sea is created for a pioneer to act first and open this market. Despite the positive social change it will bring, the existence of a nitrite-free pilled have the potential to generate huge amount of profit, rewarding the inventor of the first and best-qualified product. So as high school students, eager to promote positive social change, we don’t have enough ability or motivation to turn our research into a qualified product shortly, but we will continue our research, and the potential profit will help us in finding sponsor to this research, benefiting our future work.
 						<br><br>
 						

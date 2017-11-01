@@ -216,3 +216,96 @@ a:hover {
 	background: rgb(70, 70, 70);
 	color: white !important;
 }
+
+.main.scroll-top-btn {
+	position: fixed;
+	bottom: 2rem;
+	left: 2rem;
+
+	z-index: 102;
+
+	width: 3em;
+	height: 3em;
+	line-height: 2.8em;
+	text-align: center;
+
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	background: rgb(100, 100, 100);
+	color: rgb(253, 253, 253);
+
+	border-radius: 4px;
+
+	box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+
+	cursor: pointer;
+
+	opacity: 0;
+	pointer-events: none;
+
+	transition: box-shadow 0.3s, opacity 0.3s;
+}
+
+.main.scroll-top-btn.show {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.main.scroll-top-btn:hover {
+	box-shadow: 0 5px 7px rgba(0, 0, 0, 0.3);
+}
+
+.main.scroll-top-btn:active {
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.main.bottom-bar .block {
+	padding: 6rem 0;
+	box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.main.bottom-bar .member-badge {
+	display: inline-block;
+	margin-right: 1rem;
+
+	cursor: pointer;
+}
+
+.main.bottom-bar .member-badge .tiny-avatar {
+	display: inline-block;
+
+	width: 1.5rem;
+	height: 1.5rem;
+	margin-right: 0.3rem;
+
+	border-radius: 4px;
+
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+
+	background-color: rgb(253, 253, 253);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	vertical-align: middle;
+}
+
+.main.bottom-bar .sponsor-link {
+	display: inline-block;
+	
+	width: 10rem;
+	height: 6rem;
+	margin-right: 0.3rem;
+
+	border-radius: 4px;
+
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+
+	background-color: rgb(253, 253, 253);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	cursor: pointer;
+
+	vertical-align: middle;
+}

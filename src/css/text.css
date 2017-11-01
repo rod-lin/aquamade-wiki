@@ -1,0 +1,65 @@
+.atext {
+    line-height: 1.8;
+}
+
+.atext .no {
+    display: inline-block;
+
+    vertical-align: middle;
+
+    height: 1.7em;
+    width: 1.6em;
+    line-height: 1.8em;
+    text-align: center;
+
+    font-size: 0.75em;
+    font-family: Veneer;
+
+    background: rgb(250, 250, 250);
+    color: rgb(130, 130, 130);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    margin-right: 0.8em;
+    margin-left: 3rem;
+
+    border-radius: 3px;
+}
+
+.atext .dot {
+    display: inline-block;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: rgb(100, 100, 100);
+    vertical-align: middle;
+
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+
+    margin-right: 0.8em;
+    margin-left: 3rem;
+}
+
+/* placeholder */
+.atext .ph {
+    display: inline-block;
+    content: " ";
+}
+
+.atext .sec {
+    margin-left: 6rem !important;
+}
+
+.atext .ind {
+    margin-left: 3rem;
+}
+
+.atext h2 {
+    color: rgb(100, 100, 100);
+}
+
+.atext h3 {
+    color: rgb(130, 130, 130);
+}

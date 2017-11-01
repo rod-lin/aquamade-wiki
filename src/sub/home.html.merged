@@ -112,7 +112,7 @@
 		
 				Currently, most industrial production of pickles relies on the natural decomposing process of nitrite, which is inefficient and often takes months to complete. To make an improvement, we designed a bio-device to make the degradation of nitrite more rapid and environmental-friendly.
 				
-				<div class="imgbox"><img src="/wiki/images/0/04/T--HFLS_H2Z_Hangzhou--img_home_pickle1.jpg" /></div>
+				<!-- <div class="imgbox"><img src="/wiki/images/0/04/T--HFLS_H2Z_Hangzhou--img_home_pickle1.jpg" /></div> -->
 				
 				Our device consists of a positive feedback loop device followed by a fusion enzyme which can reduce nitrite to nitrogen and oxygen. The feedback loop is regulated by a nitrite/nitrate specific promoter to ensure the expression of downstream function proteins only in pickles environment. Our solution drastically shorten the production period and increases profit margin for the multibillion-dollar pickled vegetables industry.
 			</div>
@@ -125,10 +125,9 @@
 
 		<div class="line-sep"></div>
 
-		<div class="block white-bg">
-			<!-- <button class="ui black button learn-more-btn" style="height: 5rem; width: 15rem; font-size: 1.5rem;">Learn more</button> -->
+		<!-- <div class="block white-bg">
 			<div style="font-size: 300%;">More coming soon</div>
-		</div>
+		</div> -->
 	</div>
 
 	<script>

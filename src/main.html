@@ -155,26 +155,31 @@
 				imgview.refresh();
 			});
 
-			var scrollToTop = (function () {
+			var scrollToTop = window.gradScroll = (function () {
 				var a = 3;
 				var p = 2;
 				var delta = 1;
 
-				return function () {
+				return function (target) {
+					var target = target || 0;
+
 					var top = $(".main.cont-wrap").scrollTop();
 
-					if (top < 3) {
-						$(".main.cont-wrap").scrollTop(0);
+					if (top < target || target < 0) return;
+
+					if (Math.abs(top - target) <= 3) {
+						$(".main.cont-wrap").scrollTop(target);
 						return;
 					}
 
-					var x = Math.pow(top / a, 1 / p);
-					var next = Math.abs(a * Math.pow(x - delta, p));
+					var x = Math.pow((top - target) / a, 1 / p);
+
+					var next = Math.abs(a * Math.pow(x - delta, p)) + target;
 
 					$(".main.cont-wrap").scrollTop(next);
 					
 					setTimeout(function () {
-						scrollToTop();
+						scrollToTop(target);
 					}, 24);
 				};
 			})();
@@ -327,8 +332,9 @@
 							<a class="sub-link-item" href="#backg">Background</a>
 							<a class="sub-link-item" href="#design">Design</a>
 							<a class="sub-link-item" href="#enzyme">Enzyme</a>
-							<a class="sub-link-item" href="#genecirc">Generic Circuits</a>
+							<a class="sub-link-item" href="#genecirc">Genetic Circuits</a>
 							<a class="sub-link-item" href="#perform">Performance</a>
+							<a class="sub-link-item" href="#chassis">Chassis Selection</a>
 						</div>
 					</div>
 				</span>
@@ -382,16 +388,6 @@
 			<div class="line-sep"></div>
 			<div class="block black-bg">
 				<div class="wide article article-font" style="color: rgb(253, 253, 253);">
-					<h2><i data-href="#attrib" class="fake-link linkify icon"></i>Sponsors</h2>
-					<div>
-						<div class="sponsor-link fake-link" data-href="" style="background-image: url('/img/attrib/logo1.jpg');"></div>
-						<div class="sponsor-link fake-link" style="background-image: url('/img/attrib/logo2.jpg');"></div>
-						<div class="sponsor-link fake-link" style="background-image: url('/img/attrib/logo3.jpg');"></div>
-						<div class="sponsor-link fake-link" style="background-image: url('/img/attrib/logo4.jpg');"></div>
-						<div class="sponsor-link fake-link" style="background-image: url('/img/attrib/logo5.jpg');"></div>
-					</div>
-					<br>
-
 					<h2><i data-href="#member" class="fake-link linkify icon"></i>Team Members</h2>
 					<div style="font-family: Veneer;">
 						<div class="member-badge">
@@ -450,14 +446,20 @@
 						</div>
 
 						<div class="member-badge">
-							<div class="tiny-avatar" style="background-image: url('/img/member/ziyue.jpg');"></div>
-							Ziyue Li
-						</div>
-
-						<div class="member-badge">
 							<div class="tiny-avatar" style="background-image: url('/img/member/yanyue.jpg');"></div>
 							Yanyue Zhu
 						</div>
+					</div>
+
+					<br>
+
+					<h2><i data-href="#attrib" class="fake-link linkify icon"></i>Sponsors</h2>
+					<div>
+						<div class="sponsor-link fake-link" data-href="" style="background-image: url('/img/attrib/logo1.jpg');"></div>
+						<div class="sponsor-link fake-link" data-href="" style="background-image: url('/img/attrib/logo2.jpg');"></div>
+						<div class="sponsor-link fake-link" data-href="" style="background-image: url('/img/attrib/logo3.jpg');"></div>
+						<div class="sponsor-link fake-link" data-href="" style="background-image: url('/img/attrib/logo4.jpg');"></div>
+						<div class="sponsor-link fake-link" data-href="" style="background-image: url('/img/attrib/logo5.jpg');"></div>
 					</div>
 				</div>
 			</div>

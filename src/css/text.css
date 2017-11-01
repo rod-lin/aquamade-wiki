@@ -2,6 +2,10 @@
     line-height: 1.8;
 }
 
+.atext .noind {
+    margin-left: 0 !important;
+}
+
 .atext .no {
     display: inline-block;
 
@@ -62,4 +66,23 @@
 
 .atext h3 {
     color: rgb(130, 130, 130);
+}
+
+.atext a {
+	color: #2980B9 !important;
+
+	border-bottom: 2px solid transparent;
+
+	cursor: pointer;
+	transition: color 0.2s, border 0.3s;
+}
+
+.atext a:hover {
+	color: #3498DB !important;
+	border-bottom: 2px solid #3498DB;
+}
+
+.atext a:active {
+    color: #1274B5 !important;
+    border-bottom: 2px solid #1274B5;
 }

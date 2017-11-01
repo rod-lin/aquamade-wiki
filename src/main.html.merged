@@ -264,6 +264,58 @@ a:hover {
 .main.scroll-top-btn:active {
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
+
+.main.bottom-bar .block {
+	padding: 6rem 0;
+	box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.main.bottom-bar .member-badge {
+	display: inline-block;
+	margin-right: 1rem;
+
+	cursor: pointer;
+}
+
+.main.bottom-bar .member-badge .tiny-avatar {
+	display: inline-block;
+
+	width: 1.5rem;
+	height: 1.5rem;
+	margin-right: 0.3rem;
+
+	border-radius: 4px;
+
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+
+	background-color: rgb(253, 253, 253);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	vertical-align: middle;
+}
+
+.main.bottom-bar .sponsor-link {
+	display: inline-block;
+	
+	width: 10rem;
+	height: 6rem;
+	margin-right: 0.3rem;
+
+	border-radius: 4px;
+
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+
+	background-color: rgb(253, 253, 253);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	cursor: pointer;
+
+	vertical-align: middle;
+}
 </style>
 		<style>a {
 	text-decoration: none !important;
@@ -330,6 +382,11 @@ table.frameless td {
 	border: 0 !important;
 }
 
+table.ref-table td {
+	min-width: 2em;
+	vertical-align: top;
+}
+
 .center {
 	width: auto !important;
 }
@@ -345,6 +402,8 @@ table.frameless td {
 	width: 50rem;
 	max-width: 100%;
 	text-align: left;
+
+	padding: 0 1rem;
 }
 
 .wide.article {
@@ -363,6 +422,10 @@ table.frameless td {
 
 .white-bg {
 	background: rgb(253, 253, 253);
+}
+
+.black-bg {
+	background: rgb(30, 30, 30);
 }
 
 .line-sep {
@@ -604,6 +667,19 @@ table.frameless td {
 			// if (Modernizr.csstransforms3d) {
 			// }
 
+			$(".fake-link").each(function (i, dom) {
+				dom = $(dom);
+
+				dom.css("cursor", "pointer");
+				dom.click(function () {
+					if (dom.data("href")) {
+						window.location = dom.data("href");
+					}
+				});
+			});
+
+			$(".main.cont-wrap").append($(".main.bottom-bar"));
+
 			var wrap;
 
 			if (ADEBUG) {
@@ -675,26 +751,31 @@ table.frameless td {
 				imgview.refresh();
 			});
 
-			var scrollToTop = (function () {
+			var scrollToTop = window.gradScroll = (function () {
 				var a = 3;
 				var p = 2;
 				var delta = 1;
 
-				return function () {
+				return function (target) {
+					var target = target || 0;
+
 					var top = $(".main.cont-wrap").scrollTop();
 
-					if (top < 3) {
-						$(".main.cont-wrap").scrollTop(0);
+					if (top < target || target < 0) return;
+
+					if (Math.abs(top - target) <= 3) {
+						$(".main.cont-wrap").scrollTop(target);
 						return;
 					}
 
-					var x = Math.pow(top / a, 1 / p);
-					var next = Math.abs(a * Math.pow(x - delta, p));
+					var x = Math.pow((top - target) / a, 1 / p);
+
+					var next = Math.abs(a * Math.pow(x - delta, p)) + target;
 
 					$(".main.cont-wrap").scrollTop(next);
 					
 					setTimeout(function () {
-						scrollToTop();
+						scrollToTop(target);
 					}, 24);
 				};
 			})();
@@ -847,8 +928,9 @@ table.frameless td {
 							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/sub/backg'>Background</a>
 							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/Applied_Design'>Design</a>
 							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/sub/enzyme'>Enzyme</a>
-							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/sub/genecirc'>Generic Circuits</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/sub/genecirc'>Genetic Circuits</a>
 							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/Demonstrate'>Performance</a>
+							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/sub/chassis'>Chassis Selection</a>
 						</div>
 					</div>
 				</span>
@@ -896,6 +978,87 @@ table.frameless td {
 					</div>
 				</span>
 			</span>
+		</div>
+
+		<div class="main bottom-bar">
+			<div class="line-sep"></div>
+			<div class="block black-bg">
+				<div class="wide article article-font" style="color: rgb(253, 253, 253);">
+					<h2><i data-href='/Team:HFLS_H2Z_Hangzhou/sub/member' class="fake-link linkify icon"></i>Team Members</h2>
+					<div style="font-family: Veneer;">
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/wiki/images/b/b5/T--HFLS_H2Z_Hangzhou--img_member_canal.jpg');"></div>
+							Jianan Li
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/wiki/images/d/d8/T--HFLS_H2Z_Hangzhou--img_member_sunny.jpg');"></div>
+							Qingrui Sun
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/wiki/images/9/9d/T--HFLS_H2Z_Hangzhou--img_member_yiming.jpg');"></div>
+							Yiming Rong
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/wiki/images/4/4a/T--HFLS_H2Z_Hangzhou--img_member_jiayue.jpg');"></div>
+							Jiayue Guo
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/wiki/images/5/58/T--HFLS_H2Z_Hangzhou--img_member_annie.jpg');"></div>
+							Zhiyuan Lu
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/wiki/images/9/96/T--HFLS_H2Z_Hangzhou--img_member_meiqi.jpg');"></div>
+							Meiqi Yuan
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/wiki/images/b/bf/T--HFLS_H2Z_Hangzhou--img_member_rod.jpg');"></div>
+							Zhengyao Lin
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/wiki/images/7/70/T--HFLS_H2Z_Hangzhou--img_member_eva.jpg');"></div>
+							Caiyi Feng
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/wiki/images/e/eb/T--HFLS_H2Z_Hangzhou--img_member_shuyun.jpg');"></div>
+							Shuyun Zhang
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/wiki/images/9/9d/T--HFLS_H2Z_Hangzhou--img_member_daniel.jpg');"></div>
+							Tenghao Huang
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/wiki/images/6/63/T--HFLS_H2Z_Hangzhou--img_member_sam.jpg');"></div>
+							Yining Huang
+						</div>
+
+						<div class="member-badge">
+							<div class="tiny-avatar" style="background-image: url('/wiki/images/3/39/T--HFLS_H2Z_Hangzhou--img_member_yanyue.jpg');"></div>
+							Yanyue Zhu
+						</div>
+					</div>
+
+					<br>
+
+					<h2><i data-href='/Team:HFLS_H2Z_Hangzhou/Attributions' class="fake-link linkify icon"></i>Sponsors</h2>
+					<div>
+						<div class="sponsor-link fake-link" data-href="" style="background-image: url('/wiki/images/9/99/T--HFLS_H2Z_Hangzhou--img_attrib_logo1.jpg');"></div>
+						<div class="sponsor-link fake-link" data-href="" style="background-image: url('/wiki/images/e/e2/T--HFLS_H2Z_Hangzhou--img_attrib_logo2.jpg');"></div>
+						<div class="sponsor-link fake-link" data-href="" style="background-image: url('/wiki/images/1/1b/T--HFLS_H2Z_Hangzhou--img_attrib_logo3.jpg');"></div>
+						<div class="sponsor-link fake-link" data-href="" style="background-image: url('/wiki/images/0/0b/T--HFLS_H2Z_Hangzhou--img_attrib_logo4.jpg');"></div>
+						<div class="sponsor-link fake-link" data-href="" style="background-image: url('/wiki/images/5/5f/T--HFLS_H2Z_Hangzhou--img_attrib_logo5.jpg');"></div>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="bg-layer"></div>

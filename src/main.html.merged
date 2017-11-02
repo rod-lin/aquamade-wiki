@@ -708,6 +708,28 @@ table.ref-table td {
 	</script>
 
 	<script>
+		// delete #HQ_page .button
+		$(function () {
+			if (ADEBUG) return;
+
+			var styles = document.styleSheets;
+
+			if (styles) {
+				styles = styles[0];
+
+				for (var i = 0; i < styles.cssRules.length; i++) {
+					if (styles.cssRules[i].selectorText == "#HQ_page .button" ||
+						styles.cssRules[i].selectorText == "#HQ_page .button:hover") {
+						// delete styles.cssRules[i];
+						styles.deleteRule(i);
+						i--;
+					}
+				}
+			}
+		});
+	</script>
+
+	<script>
 		$(function () {
 			// alert(Modernizr.csstransforms3d);
 			// if (Modernizr.csstransforms3d) {
@@ -1007,7 +1029,7 @@ table.ref-table td {
 					<i class="angle down icon"></i>Notebook
 					<div class="expand-item-set-cont">
 						<div class="expand-item-set">
-							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/sub/experim'>Experiments</a>
+							<!-- <a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/sub/experim'>Experiments</a> -->
 							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/sub/protocol'>Protocols</a>
 							<a class="sub-link-item" href='/Team:HFLS_H2Z_Hangzhou/InterLab'>Interlab</a>
 						</div>
@@ -1030,7 +1052,7 @@ table.ref-table td {
 			<div class="line-sep"></div>
 			<div class="block black-bg">
 				<div class="wide article article-font" style="color: rgb(253, 253, 253);">
-					<h2><i data-href='/Team:HFLS_H2Z_Hangzhou/sub/member' class="fake-link linkify icon"></i>Team Members</h2>
+					<h2 style="color: rgb(253, 253, 253);"><i data-href='/Team:HFLS_H2Z_Hangzhou/sub/member' class="fake-link linkify icon"></i>Team Members</h2>
 					<div style="font-family: Veneer;">
 						<div class="member-badge">
 							<div class="tiny-avatar" style="background-image: url('/wiki/images/b/b5/T--HFLS_H2Z_Hangzhou--img_member_canal.jpg');"></div>
@@ -1095,7 +1117,7 @@ table.ref-table td {
 
 					<br>
 
-					<h2><i data-href='/Team:HFLS_H2Z_Hangzhou/Attributions' class="fake-link linkify icon"></i>Sponsors</h2>
+					<h2 style="color: rgb(253, 253, 253);"><i data-href='/Team:HFLS_H2Z_Hangzhou/Attributions' class="fake-link linkify icon"></i>Sponsors</h2>
 					<div>
 						<div class="sponsor-link fake-link" data-href="" style="background-image: url('/wiki/images/9/99/T--HFLS_H2Z_Hangzhou--img_attrib_logo1.jpg');"></div>
 						<div class="sponsor-link fake-link" data-href="" style="background-image: url('/wiki/images/e/e2/T--HFLS_H2Z_Hangzhou--img_attrib_logo2.jpg');"></div>

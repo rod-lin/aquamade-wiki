@@ -66,6 +66,28 @@
 	</script>
 
 	<script>
+		// delete #HQ_page .button
+		$(function () {
+			if (ADEBUG) return;
+
+			var styles = document.styleSheets;
+
+			if (styles) {
+				styles = styles[0];
+
+				for (var i = 0; i < styles.cssRules.length; i++) {
+					if (styles.cssRules[i].selectorText == "#HQ_page .button" ||
+						styles.cssRules[i].selectorText == "#HQ_page .button:hover") {
+						// delete styles.cssRules[i];
+						styles.deleteRule(i);
+						i--;
+					}
+				}
+			}
+		});
+	</script>
+
+	<script>
 		$(function () {
 			// alert(Modernizr.csstransforms3d);
 			// if (Modernizr.csstransforms3d) {
@@ -365,7 +387,7 @@
 					<i class="angle down icon"></i>Notebook
 					<div class="expand-item-set-cont">
 						<div class="expand-item-set">
-							<a class="sub-link-item" href="#experim">Experiments</a>
+							<!-- <a class="sub-link-item" href="#experim">Experiments</a> -->
 							<a class="sub-link-item" href="#protocol">Protocols</a>
 							<a class="sub-link-item" href="#interlab">Interlab</a>
 						</div>
@@ -388,7 +410,7 @@
 			<div class="line-sep"></div>
 			<div class="block black-bg">
 				<div class="wide article article-font" style="color: rgb(253, 253, 253);">
-					<h2><i data-href="#member" class="fake-link linkify icon"></i>Team Members</h2>
+					<h2 style="color: rgb(253, 253, 253);"><i data-href="#member" class="fake-link linkify icon"></i>Team Members</h2>
 					<div style="font-family: Veneer;">
 						<div class="member-badge">
 							<div class="tiny-avatar" style="background-image: url('/img/member/canal.jpg');"></div>
@@ -453,7 +475,7 @@
 
 					<br>
 
-					<h2><i data-href="#attrib" class="fake-link linkify icon"></i>Sponsors</h2>
+					<h2 style="color: rgb(253, 253, 253);"><i data-href="#attrib" class="fake-link linkify icon"></i>Sponsors</h2>
 					<div>
 						<div class="sponsor-link fake-link" data-href="" style="background-image: url('/img/attrib/logo1.jpg');"></div>
 						<div class="sponsor-link fake-link" data-href="" style="background-image: url('/img/attrib/logo2.jpg');"></div>

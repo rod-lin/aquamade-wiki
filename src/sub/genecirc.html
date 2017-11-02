@@ -1,4 +1,18 @@
 <html>
+	<head>
+		<script sync src="https://cdn.bootcss.com/mathjax/2.7.2/latest.js?config=TeX-AMS_HTML"></script>
+
+		<script type="text/x-mathjax-config">
+			MathJax.Ajax.config.path["mhchem"] = "https://cdn.bootcss.com/mathjax-mhchem/3.2.0";
+			MathJax.Hub.Config({
+				tex2jax: { inlineMath: [ [ "$", "$" ], [ "\\(", "\\)" ] ] },
+
+				TeX: {
+					extensions: [ "[mhchem]/mhchem.js" ]
+				} 
+			});
+		</script>
+	</head>
 
 	<script sync src="https://cdn.bootcss.com/mathjax/2.7.2/latest.js?config=TeX-AMS_HTML"></script>
 
@@ -22,10 +36,305 @@
 
 	<link rel="stylesheet" type="text/css" href="/css/text.css">
 
-	<div class="page-genecirc" style="font-family: Veneer;">
+	<script src="/js/comsec.js"></script>
+
+	<style>
+		
+		.float-menu {
+			position: absolute;
+			left: 0;
+			width: 17rem !important;
+		}
+		
+		.article-cont {
+			padding-left: 19rem;
+		}
+		
+		.passage {
+			display: none;
+		}
+		
+		.passage.shown {
+			display: block;
+		}
+		
+	</style>
+
+	<div class="page-genecirc comsec-main comsec-use-exnav" style="font-family: Veneer;">
 		<div class="main-block fullscr main-title" style="font-size: 7rem; text-align: center;">
 			<div class="vcenter" style="line-height: 1;">
-				<span>Genetic Circuits</span>
+				<span>Genetic Circuit</span>
+			</div>
+		</div>
+
+		<div class="line-sep"></div>
+
+		<div class="block white-bg">
+			<h1>Overview</h1>
+			<div class="article article-font">
+				We constructed several genetic circuit either to act as sensors or act as expression device. Through our visit to Qiumei's Lab in Hangzhou, we gained priceless data concerning the salt content of their products. You have already seen nitrite natural decomposition rate, we will use that information as working environment for our several sensors. We also will include the nitrate content information in their products to be used as working environment for our several sensors. We constructed and standardized several expression device as well, some we tested, some we didn't. By submitting parts to registry, we hope latter years' iGEM teams can further our research and pick up some of our characterization to be used in  their own design.
+			</div>
+		</div>
+
+		<div class="line-sep"></div>
+
+		<div class="block white-bg">
+			<div class="wide article article-font">
+				<div style="position: absolute; left: 0; top: 0;">
+					<div class="ui secondary vertical menu float-menu sticky">
+						<div class="ui secondary vertical menu">
+							<a target="_blank" class="active item passlink" data-passage="sensor">Sensors</a>
+						</div>
+
+						<div class="header" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">BBa_K381001</div>
+						<div class="ui secondary vertical menu">
+							<a target="_blank" class="item passlink" data-passage="p1backg">Background</a>
+							<a target="_blank" class="item passlink" data-passage="p1result">Result</a>
+							<a target="_blank" class="item passlink" data-passage="p1conclu">Conclusion</a>
+						</div>
+
+						<div class="header" style="margin-top: 1rem; margin-bottom: 0.5rem;">BBa_K2346003</div>
+						<div class="ui secondary vertical menu">
+							<a target="_blank" class="item passlink" data-passage="p2backg">Background</a>
+							<a target="_blank" class="item passlink" data-passage="p2design">Design</a>
+							<a target="_blank" class="item passlink" data-passage="p2result">Result</a>
+							<a target="_blank" class="item passlink" data-passage="p2conclu">Conclusion</a>
+						</div>
+
+						<div class="header" style="margin-top: 1rem; margin-bottom: 0.5rem;">BBa_K2346006</div>
+						<div class="ui secondary vertical menu">
+							<a target="_blank" class="item passlink" data-passage="p3backg">Background</a>
+							<a target="_blank" class="item passlink" data-passage="p3design">Design</a>
+							<a target="_blank" class="item passlink" data-passage="p3result">Result</a>
+							<a target="_blank" class="item passlink" data-passage="p3conclu">Conclusion</a>
+						</div>
+
+						<div class="header" style="margin-top: 1rem; margin-bottom: 0.5rem;">Expression Device</div>
+						<div class="ui secondary vertical menu">
+							<a target="_blank" class="item passlink" data-passage="expdev">Overview</a>
+							<a target="_blank" class="item passlink" data-passage="p4">BBa_K2346004</a>
+							<a target="_blank" class="item passlink" data-passage="p5">BBa_K2346005</a>
+							<a target="_blank" class="item passlink" data-passage="p6">BBa_K2346007</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="atext article-cont">
+					<div class="passage passage-sensor shown">
+						<h1>Sensors</h1>
+
+						We constructed in total two sensors, all start with the nitrite/nitrate responsive promoter Pyear on the right. We also tested one basic sensor <a target="_blank" href="http://parts.igem.org/Part:BBa_K381001">Part:BBa_K381001</a> and improve characterization of the part. In fact, the new sensor <a target="_blank" href="http://parts.igem.org/Part:BBa_K2346006">Part:BBa_K2346006</a> is a functional improvement to K38001.
+						<br>
+
+						<h2>Protocols for measuring the sensors</h2>
+						We use a set of protocols to measure the strength of these sensors so we could cross-reference every sensors with each other.
+
+						<h3>Procedures for making sample to be measured its fluorescence</h3>
+						
+						<table class="frameless ref-table">
+							<tbody>
+								<tr>
+									<td><div class="no noind">1</div></td>
+									<td>Select single colony from plate, place in LB culture with CmR resistance (50μg/mL), 37°C culture 12 hours.</td>
+								</tr>
+
+								<tr>
+									<td><div class="no noind">2</div></td>
+									<td>Placed in 200μL M9 culture, 250rpm, 37°C. Making the final bacteria diluted 50 times.</td>
+								</tr>
+
+								<tr>
+									<td><div class="no noind">3</div></td>
+									<td>Dilute the bacteria in step 2 20 times with M9 culture, remove 100μL to be added in the 96 well plate. Using samples without addition of nitrogen-containing salt as control, and M9 as blank.</td>
+								</tr>
+
+								<tr>
+									<td><div class="no noind">4</div></td>
+									<td>End the program after 4 hours.</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<br>
+
+						<h3>Protocol for measuring Fluorescence Intensity</h3>
+						<table class="frameless ref-table">
+							<tbody>
+								<tr>
+									<td><div class="dot noind"></div></td>
+									<td>Plate Type: 96 WELL PLATE (Use plate lid)</td>
+								</tr>
+								<tr>
+									<td><div class="dot noind"></div></td>
+									<td>Eject plate on completion</td>
+								</tr>
+								<tr>
+									<td><div class="dot noind"></div></td>
+									<td>Set Temperature:<br>
+										Setpoint 37°C, Gradient 0 °C<br>
+										Preheat before moving to next step<br>
+									</td>
+								</tr>
+								<tr>
+									<td><div class="dot noind"></div></td>
+									<td>Read:<br>
+										Absorbance Endpoint<br>
+										Full Plate<br>
+										Wavelengths: 600<br>
+										Read Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 8<br>
+									</td>
+								</tr>
+								<tr>
+									<td><div class="dot noind"></div></td>
+									<td>Read:<br>
+										Fluorescence Endpoint<br>
+										Full Plate<br>
+										Filter Set 1<br>
+										Excitation: 485,  Emission: 528<br>
+										Optics: Top,  Gain: 100<br>
+										Light Source: Xenon Flash,  Lamp Energy: High<br>
+										Read Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 10<br>
+										Read Height: 7 mm<br>
+									</td>
+								</tr>
+								<tr>
+									<td><div class="dot noind"></div></td>
+									<td>Start Kinetic:<br>
+										Double Orbital: Continuous<br>
+										Frequency: 282 cpm (3 mm)<br>
+									</td>
+								</tr>
+								<tr>
+									<td><div class="dot noind"></div></td>
+									<td>Read:<br>
+										Absorbance Endpoint<br>
+										Full Plate<br>
+										Wavelengths:  600<br>
+										Read Speed: Normal,  Delay: 100 msec,  Measurements/Data Point: 8<br>
+									</td>
+								</tr>
+								<tr>
+									<td><div class="dot noind"></div></td>
+									<td>Read:<br>
+										Fluorescence Endpoint<br>
+										Full Plate<br>
+										Filter Set 1<br>
+										Excitation: 485, Emission: 528<br>
+										Optics: Top, Gain: 100<br>
+										Light Source: Xenon Flash, Lamp Energy: High<br>
+										Read Speed: Normal, Delay: 100 msec, Measurements/Data Point: 10<br>
+										Read Height: 7 mm<br>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+					<div class="passage passage-p1backg">
+						<h1>Background</h1>
+						This is a reporting device/sensor made by team iGEM10_BCCS-Bristol, the construct is a normal GFP reporter gene attached to the PyeaR promoter, responsive to nitrate, nitrite and nitric oxide.
+					</div>
+
+					<div class="passage passage-p1result">
+						<h1>Results</h1>
+						<img class="framed img" src="/img/genecirc/p1-1.png"></img>
+					</div>
+
+					<div class="passage passage-p1conclu">
+						<h1>Conclusion</h1>
+						In our experience with this part, we found out that Pyear will yield strong transcription rate under the presence of high concentration of Nitrate. However, we found out, under high concentration of nitrite(40mM), the promoter will be repressed, unlike nitrite in low concentration. Furthermore, if nitrate(40mM) is present along with nitrite(40mM), the promoter will be inhibited.
+					</div>
+
+					<div class="passage passage-p2backg">
+						<h1>Background</h1>
+						Nitrate/nitrite responsive promoter with amplifier
+						<br><br>
+						This is a composite part and a functional improved device for <a target="_blank" href="http://parts.igem.org/Part:BBa_K216005">Part:BBa_K216005</a>. The Pyear promoter will be switched on under the presence of nitrate or nitrite, translating P2 ogr. The P2 ogr will cause inducible PF promoter to produce even stronger downstream PoPS. We attached a RBS for convince of registry users.
+						<br><br>
+						We ligated this part with a GFP+terminator.
+					</div>
+
+					<div class="passage passage-p2design">
+						<h1>Design</h1>
+						<img class="framed img" src="/img/genecirc/p2-1.png"></img>
+					</div>
+
+					<div class="passage passage-p2result">
+						<h1>Results</h1>
+						<img class="framed img" src="/img/genecirc/p2-2.png"></img>
+					</div>
+
+					<div class="passage passage-p2conclu">
+						<h1>Conclusion</h1>
+						As we can see from the graph, there is significant difference between NiSAP's response to nitrate(40mM) and Pyear+GFP's response to nitrate(40mM). After 3 hours in the plate reader, NiSAP's A.U. is nearly twice the magnitude of Pyear+GFP.
+					</div>
+
+					<div class="passage passage-p3backg">
+						<h1>Background</h1>
+						Enhanced Sensor for Nitrite/Nitrate
+						<br><br>
+						This is a functional improved device for <a target="_blank" href="http://parts.igem.org/Part:BBa_K381001">Part:BBa_K381001</a>. We replaced the original reporter gene GFP with brighter reporter gene sfGFP, in the hope to improve the sensitivity for the device to detect nitrite and nitrate.
+					</div>
+
+					<div class="passage passage-p3design">
+						<h1>Design</h1>
+						<img class="framed img" src="/img/genecirc/p3-1.png"></img>
+					</div>
+
+					<div class="passage passage-p3result">
+						<h1>Results</h1>
+						<img class="framed img" src="/img/genecirc/p3-2.png"></img>
+					</div>
+
+					<div class="passage passage-p3conclu">
+						<h1>Conclusion</h1>
+						We tested several environment for Pyear+sfGFP and compared it with Pyear+GFP. Our device compared with previous reporter <a target="_blank" href="http://parts.igem.org/Part:BBa_K381001">Part:BBa_K381001</a> is significantly better in every aspect. Furthermore, the sensitive towards nitrite is greatly improved: just with a concentration of 1.5mM nitrite, sfGFP can give equal A.U. value compared with GFP device in 40mM nitrate. Furthermore, using sfGFP, we can draw distinction between 40mM and 20mM nitrate, previously not feasible with Pyear+GFP.
+					</div>
+
+					<div class="passage passage-expdev">
+						<h1>Expression Device</h1>
+						We constructed several genetic circuit expressing proteins. We submitted composite parts with part number BBa_K2346003 to BBa_K2346007 to the registry. See our performance(http://2017.igem.org/Team:HFLS_H2Z_Hangzhou/Demonstrate) for more information.
+					</div>
+
+					<div class="passage passage-p4">
+						<h1>BBa_K2346004</h1>		
+
+						<h2>Background</h2>
+						Nitrate/nitrite responsive promoter with autoinducer synthetase for AHL(3OC6HSL)
+						<br>
+						This is a composite part. The Pyear promoter will be switched on under the presence of nitrate or nitrite, translating LuxL protein. LuxL is an enzyme for catalyzing AHL(acyl-homoserine lactones) from normal cell metabolites.
+					
+						<h2>Design</h2>
+
+						<img class="framed img" src="/img/genecirc/p4-1.png"></img>
+					</div>
+
+					<div class="passage passage-p5">
+						<h1>BBa_K2346005</h1>
+
+						<h2>Background</h2>
+						Positive Feedback Loop for NzFE
+						<br>
+						This is a device to reduce nitrite ion to its elements: oxygen and nitrogen. The device is regulated by signaling molecule AHL(3OC6HSL). The right p(tetR) promoter will constitutively express Plux’s repressor: LuxR protein. Two LuxR protein molecules can bind with two AHL molecules to form a complex which in turns switches on the PluxR promoter. The down stream LuxL is an enzyme for catalyzing AHL(acyl-homoserine lactones) from normal cell metabolites. The LuxL translated will increase the AHL content in the chassis. This forms a positive feedback loop with increasing AHL resulting in increasing PoPS from PluxR. We utilize this increasing PoPS, and place CDS for NzFE(Nitrite Degradation Fusion Enzyme) in the down stream of the circuit.
+					
+						<h2>Design</h2>
+
+						<img class="framed img" src="/img/genecirc/p5-1.png"></img>
+					</div>
+
+					<div class="passage passage-p6">
+						<h1>BBa_K2346007</h1>
+
+						<h2>Background</h2>
+						NzFE T7 expression vector
+						<br>
+						This is a composite part for expression of NzFE in DE-type bacteria. The pT7 promoter can only be used in chassis with T7 RNA synthase. Though pT7 commonly thought to be constitutive, we encountered the problem of unable to express the protein without IPTG (lactose replacement). We suspect the company providing BL21 DE strand competent cell changed the genome of their bacteria, made T7 RNA synthase regulated by IPTG.
+					
+						<h2>Design</h2>
+
+						<img class="framed img" src="/img/genecirc/p6-1.png"></img>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,4 +1,19 @@
 <html>
+	<head>
+		<script sync src="https://cdn.bootcss.com/mathjax/2.7.2/latest.js?config=TeX-AMS_HTML"></script>
+
+		<script type="text/x-mathjax-config">
+			MathJax.Ajax.config.path["mhchem"] = "https://cdn.bootcss.com/mathjax-mhchem/3.2.0";
+			MathJax.Hub.Config({
+				tex2jax: { inlineMath: [ [ "$", "$" ], [ "\\(", "\\)" ] ] },
+
+				TeX: {
+					extensions: [ "[mhchem]/mhchem.js" ]
+				} 
+			});
+		</script>
+	</head>
+
 	<script>
 		$(function () {
 			menu.reverse();
@@ -6,10 +21,421 @@
 		});
 	</script>
 
-	<div class="page-perform" style="font-family: Veneer;">
+	<link rel="stylesheet" type="text/css" href="/css/text.css">
+
+	<script src="/js/comsec.js?v=2"></script>
+	
+	<style>
+			
+		.float-menu {
+			position: absolute;
+			left: 0;
+			width: 17rem !important;
+		}
+		
+		.article-cont {
+			padding-left: 19rem;
+		}
+		
+		.passage {
+			display: none;
+		}
+		
+		.passage.shown {
+			display: block;
+		}
+		
+	</style>
+
+	<div class="page-perform comsec-main comsec-use-exnav" style="font-family: Veneer;">
 		<div class="main-block fullscr main-title" style="font-size: 7rem; text-align: center;">
 			<div class="vcenter" style="line-height: 1;">
 				<span>Performance</span>
+			</div>
+		</div>
+
+		<div class="line-sep"></div>
+
+		<div class="block white-bg">
+			<div class="wide article article-font">
+				<div style="position: absolute; left: 0; top: 0;">
+					<div class="ui secondary vertical menu float-menu sticky">
+						<a class="active item passlink" data-passage="overview">Overview</a>
+						<a class="item passlink" data-passage="backg">Backgronud</a>
+						<a class="item passlink" data-passage="linker">Linker Selection</a>
+						<a class="item passlink" data-passage="cds">Enzyme CDS Placement</a>
+						<a class="item passlink" data-passage="consexp">Construct Expression Vector for NzFE</a>
+						<a class="item passlink" data-passage="rassay">Reactivity Assay in vivo</a>
+						<a class="item passlink" data-passage="result">Results</a>
+						<a class="item passlink" data-passage="conclu">Conclusion</a>
+						<a class="item passlink" data-passage="improve">Further Improvement</a>
+						<a class="item passlink" data-passage="ref">Reference</a>
+					</div>
+				</div>
+
+				<div class="atext article-cont">
+					<div class="passage passage-overview shown">
+						<h1>Overview</h1>
+
+						While we reached the fact that both NOR and nosZ react at much faster rate than NiR which is crucial to the substrate channeling system, we cannot guarantee that no biotoxin (NO and N2O, the intermediate product of reaction pathway) will escape during the reaction pathway if we simply expressed the separately using different RBS. 
+						<br><br>
+						To give a better view of the issue, we compared the pros and cons of different ways to create this substrate channeling system.
+						
+						<br><br>
+						
+						<h2>Separately express target enzymes using different RBS</h2>
+				
+						<h3>Pros</h3>
+							<table class="frameless ref-table">
+								<tbody>
+									<tr>
+										<td><div class="no">1</div></td>
+										<td>easy to construct</td>
+									</tr>
+									<tr>
+										<td><div class="no">2</div></td>
+										<td>use the RBS of different efficiency to regulate the expression</td>
+									</tr>
+								</tbody>
+							</table>
+
+						<h3>Cons</h3>
+							<table class="frameless ref-table">
+								<tbody>
+									<tr>
+										<td><div class="no">1</div></td>
+										<td>Enzymes can be far apart in space, resulting in bad efficiency</td>
+									</tr>
+									<tr>
+										<td><div class="no">2</div></td>
+										<td>possible leakage of bio toxins</td>
+									</tr>
+								</tbody>
+							</table>
+							
+						<br><br>
+
+						<h2>Fusion Protein</h2>
+						
+						<h3>Pros</h3>
+							<table class="frameless ref-table">
+								<tbody>
+									<tr>
+										<td><div class="no">1</div></td>
+										<td>The product of previous enzyme will directly go to active site of next enzyme</td>
+									</tr>
+									<tr>
+										<td><div class="no">2</div></td>
+										<td>Enzymes are physically fixed next to each other, kinetics of the fusion protein is easy to predict</td>
+									</tr>
+								</tbody>
+							</table>
+							
+						<h3>Cons</h3>
+							<table class="frameless ref-table">
+								<tbody>
+									<tr>
+										<td><div class="no">1</div></td>
+										<td>difficult to construct</td>
+									</tr>
+									<tr>
+										<td><div class="no">2</div></td>
+										<td>difficult to select the correct linker</td>
+									</tr>
+									<tr>
+										<td><div class="no">3</div></td>
+										<td>not possible to regulate the ratio of expression of three enzymes</td>
+									</tr>
+								</tbody>
+							</table>
+						
+						<br><br>
+						<h2>Scaffold method</h2>
+
+						<h3>Pros</h3>
+							<table class="frameless ref-table">
+								<tbody>
+									<tr>
+										<td><div class="no">1</div></td>
+										<td>possible to regulate expression ratio </td>
+									</tr>
+									<tr>
+										<td><div class="no">2</div></td>
+										<td>fixed physical positions for enzymes</td>
+									</tr>
+								</tbody>
+							</table>
+							
+						
+						<h3>Cons</h3>
+							<table class="frameless ref-table">
+								<tbody>
+									<tr>
+										<td><div class="no">1</div></td>
+										<td>most difficult to construct</td>
+									</tr>
+								</tbody>
+							</table>
+							
+						<br><br>
+						However, in our situation, the difference between Scaffolding and Fusion Protein is quite small: since NiR's reaction rate is already a limiting factor in the pathway, there is no need to regulate the expression ratio between our target enzymes. So we settled down with fusion protein.
+					</div>
+
+					<div class="passage passage-backg">
+						<h1>Background</h1>
+
+						There are currently four methods of fusion protein assembly: <br>
+						<br>
+						<table class="frameless ref-table">
+							<tbody>
+								<tr>
+									<td><div class="no noind">1</div></td>
+									<td>End-to end fusion.<br>
+										This method works by directly add the gene for the second enzyme to the end of gene for the first enzyme (the stop codon of the first gene is removed). The N-terminus of one domain is linked to the C-terminus of the other domain. However, the error rate of this method is relatively high, due to the uncontrollable interactions of amino acid residues and errors during the folding of polypeptides.<br><br></td>
+								</tr>
+								<tr>
+									<td><div class="no noind">2</div></td>
+									<td>End-to-end fusion with a linker.<br>
+										This is an improvement on the previous method, as the linker protein separates the domains of a bifunctional fusion protein, preventing the domains from interacting and interfering with each other. This method has been successfully applied in many researches.<br><br></td>
+								</tr>
+								<tr>
+									<td><div class="no noind">3</div></td>
+									<td>Insertional fusion.<br>
+										In this method, one domain is inserted in-frame into the middle of the other parent domain. Since a double connection allows fewer degrees of freedom than any single connection, insertional fusion proteins are expected to form more rigid and stable structures than end to end fusion proteins. However, the construction is much more complicated because it requires precise information on the parent domain structure to identify a suitable insertion site.<br><br></td>
+								</tr>
+								<tr>
+									<td><div class="no noind">4</div></td>
+									<td>Branched fusion.<br>
+										Instead of fusion at gene level, branched fusion works by directly fusion at protein level usually using enzymes. This method avoids problems of gene expression and folding of protein, but there are many limitations about the design of the linker.<br><br></td>
+								</tr>
+							</tbody>
+						</table>
+
+						<img class="framed img" src="/img/perform/backg1.jpg"></img>
+						<div class="img-name">Fig 1. Four strategies for fusion enzyme design. (A) Direct end-to-end fusion. (B) End-to-end fusion with a linker. (C) Insertional fusion. (D) Branched fusion (N and C denote the N-terminus and C-terminus of the protein, respectively). [1]</div>
+				
+						We take the advantages and disadvantages of each method into serious consideration. Since we currently do not have the knowledge and ability to analyze the domains of proteins, and complicated intersectional fusion is beyond our level, we choose the second method, end-to-end fusion with linkers.
+					</div>
+
+					<div class="passage passage-linker">
+						<h1>Linker Selection</h1>
+
+						Our fusion protein NzFE (nitrite reducing fusion enzyme) is constructed using GGGGS x2 linker and EAAAK x2 linker. The reason for this selection is simple: these two linkers are best characterized. GGGGS x2 linker is a flexible linker with advantages like improving protein solubility, providing enzyme flexibility for catalysis, domain separation. EAAAK x2 linker is an α-helix forming linker, has advantages of improving protein solubility, providing enzyme flexibility for catalysis and maintain domain separation. The share advantages of these two linkers are they provide good domain separation, crucial for maintaining the structures of original active sites in our fusion protein.
+					
+						<img class="framed img" src="/img/perform/linker1.png"></img>
+						<div class="img-name">Fig 2. Construct of our fusion enzyme</div>
+					</div>
+
+					<div class="passage passage-cds">
+						<h1>Enzyme CDS Placement</h1>
+
+						At first glance, our fusion enzyme design may seemed counter-intuition for you: we placed the CDS for first enzyme of our substrate channeling device in the exact middle of the construct, instead of front. We did this actually to make sure the linker selection will greatly affects the reactivity of our fusion enzyme: if the linker selection is not wise, we would detect no reactivity of fusion enzyme at all. Placing nitrite reductase in the middle of the construct ensures that if the fusion enzyme can reduce nitrite ions from the solution, we can make the educated inference that the active sites of nitric oxide reductase and nitrous oxide reductase are functional.
+
+						<br><br>
+
+						<b>This design is due to the limited assay method for enzyme reactivity and we want to make sure our product will not release any toxic materials during use.</b>
+					</div>
+
+					<div class="passage passage-consexp">
+						<h1>Construct Expression vector for NzFE</h1>
+						We used inFusion Assembly to construct this final vector. First we use PCR to eliminate the start codons for NiR and NOR, eliminate stop codons for nosZ and NiR, and adding overlap using premiers. We added a T7 promoter and double terminators using PCR to complete the construction of the vector. Then we standardized the part using inFusion kit.
+					
+						<img class="framed img" src="/img/perform/consexp1.jpg"></img>
+						<div class="img-name">Expression vector for NzFE</div>
+
+						forward premier for NOR: taatacgactcactatagggaaagaggagaaaCTGCAAATGTCAGATGATACCAAATCTCCTC
+						<br>
+						reverse premier for NOR: ccaccaccagaaccaccaccaccGGCTTTTTCCACTAACATACGACCGC
+						<br><br>
+
+						forward premier for NiR: tggtggttctggtggtggtggttctATGCTGGCAGCTCAGGTTCAG
+						<br>
+						reverse premier for NiR: TGCTGCTTCCTTTGCTGCTGCTTCGGCTTTGATAGGACCCGGAGGAC
+						<br><br>
+
+						forward premier for nosZ:AGCAAAGGAAGCAGCAGCAAAGATGGCACCTCAGCATGATTTT
+						<br>
+						reverse premier for nosZ:  gcctttcgttttatttgatgcctggctctaggagcgCGACCAGATACTT
+					</div>
+					
+					<div class="passage passage-rassay">
+						<h1>Reactivity Assay in vivo</h1>
+
+						Our fusion protein is constructed using GGGGS linker and EAAAK linker on a T7 vector. It is then expressed in $E. coli$ (BL21) under the IPTG inducer. We tested the results using the same method for NiR, which is using a chromogenic agent to show the change in concentration of nitrite. We incubated at a temperature gradient of 16, 25 and 30 degree Celsius, 220rpm. 
+						<br>
+						
+						<h2>Protocol</h2>
+
+						<table class="frameless ref-table">
+							<tbody>
+								<tr>
+									<td><div class="dot"></div></td>
+									<td>Add IPTG into prepared cultures of $E.coli$ (IPTG concentration: 0.1mg/L)</td>
+								</tr>
+								<tr>
+									<td><div class="dot"></div></td>
+									<td>Induce at 16 Celsius degree, 150 rpm overnight</td>
+								</tr>
+								<tr>
+									<td><div class="dot"></div></td>
+									<td>Add sodium nitrite solution and pickle extract collected from Qiumei Food (Target nitrite concentration: ~65mg/L), place three bottles of culture in different temperature</td>
+								</tr>
+								<tr>
+									<td><div class="dot"></div></td>
+									<td>Take samples (500uL) of the cultures at various time points</td>
+								</tr>
+								<tr>
+									<td><div class="dot"></div></td>
+									<td>Measure optical density(600nm) of the samples</td>
+								</tr>
+								<tr>
+									<td><div class="dot"></div></td>
+									<td>Centrifugate at 6,000 rpm for 60s </td>
+								</tr>
+								<tr>
+									<td><div class="dot"></div></td>
+									<td>Take 100uL samples from supernatant and dilute with 900uL ddH2O</td>
+								</tr>
+								<tr>
+									<td><div class="dot"></div></td>
+									<td>Take 100uL samples from the diluted solution and dilute again with 900 uL ddH2O</td>
+								</tr>
+								<tr>
+									<td><div class="dot"></div></td>
+									<td>Add 20uL of chromogenic agent to the solution</td>
+								</tr>
+								<tr>
+									<td><div class="dot"></div></td>
+									<td>Stand the solution for 20 mins and wait for the color to develop. </td>
+								</tr>
+								<tr>
+									<td><div class="dot"></div></td>
+									<td>Measure the absorbance(540nm) of the solutions </td>
+								</tr>
+								<tr>
+									<td><div class="dot"></div></td>
+									<td>Record data in Excel forms</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<br>
+						*Prepare the chromogenic agent as follows:<br>
+
+						<table class="frameless ref-table">
+							<tbody>
+								<tr>
+									<td><div class="no">1</div></td>
+									<td>In 500mL beaker
+										<table class="frameless ref-table">
+											<tbody>
+												<tr>
+													<td><div class="dot"></div></td>
+													<td>50mL Phosphoric Acid (d=1.70g/m)</td>
+												</tr>
+
+												<tr>
+													<td><div class="dot"></div></td>
+													<td>20.0g p-aminobenzenesulfonamide (C6H8N2O2S)</td>
+												</tr>
+
+												<tr>
+													<td><div class="dot"></div></td>
+													<td>1g n-(1-naphthyl)-ethylenediamine dihydrochloride</td>
+												</tr>
+
+												<tr>
+													<td><div class="dot"></div></td>
+													<td>250mL ddH2O</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td><div class="no">2</div></td>
+									<td>Transfer the solution to a  500mL volumetric flask and dilute with ddH2O to standard volume.</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<br>
+						<b>We selected these temperature gradient because they represented the normal temperature in Qiumei Food's storage.</b>
+					</div>
+
+					<div class="passage passage-result">
+						<h1>Results</h1>
+
+						*Because the controls in different temperature showed similar results, we took their mean for better presentation.
+					
+						<img class="framed img" src="/img/perform/result1.png"></img>
+						<img class="framed img" src="/img/perform/result2.png"></img>
+						<img class="framed img" src="/img/perform/result3.png"></img>
+						<img class="framed img" src="/img/perform/result4.png"></img>
+					</div>
+
+					<div class="passage passage-conclu">
+						<h1>Conclusion</h1>
+						The difference in Nitrite concentration may be caused by the different pickle extract: Qiumei Food provided us with only small quantity of samples each package. While we are satisfied with the result of NzFE in 16 °C and 25°C: both reduced more than 40% nitrite after 39hours. However, the result of 30°C is less satisfied: only 20% nitrite reduction after 39hours. We consulted with Dr.Zhang in Bluepha, and he suggested that at 30°C, bacteria is around its optimum growth temperature compared to 16°C and 25°C, and that much higher growth rate caused too much metabolic stress on cells, leading to unsuccessful translations.
+					</div>
+
+					<div class="passage passage-improve">
+						<h1>Further Improvement</h1>
+						
+						<table class="frameless ref-table">
+							<tbody>
+								<tr>
+									<td><div class="no noind">1</div></td>
+									<td>Implement the product by replacing better linker, making the results as close to prediction in <a href="#model">Modeling</a> as possible, which means finding linkers with least impact to our target enzymes' active sites.</td>
+								</tr>
+								<tr>
+									<td><div class="no noind">2</div></td>
+									<td>Testing the feedback loop device regulated by Pyear promoter(BBa_K2346005 and BBa_K2346006).</td>
+								</tr>
+								<tr>
+									<td><div class="no noind">3</div></td>
+									<td>Change our chassis to $B.substilis$(see <a href="#chassis">Chassis Selection</a>). </td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="passage passage-ref">
+						<h1>Reference</h1>
+						
+						<table class="frameless ref-table">
+							<tbody>
+								<tr>
+									<td><div class="no noind">1</div></td>
+									<td>Huang X, Holden H M, Raushel F M. Channeling of Substrates and Intermediates in Enzyme-Catalyzed Reactions[J]. Annual Review of Biochemistry, 2001, 70(1):149.</td>
+								</tr>
+								<tr>
+									<td><div class="no noind">2</div></td>
+									<td>[95] Nielsen KA, Tattersall DB, Jones PR, et al. Metabolon formation in dhurrin biosynthesis. Phytochemistry, 2008, 69(1): 88−98</td>
+								</tr>
+								<tr>
+									<td><div class="no noind">3</div></td>
+									<td>Ovádi J, Srere PA. Metabolic consequences of enzyme interactions. Cell Biochem Funct, 1996, 14(4): 249−258. </td>
+								</tr>
+								<tr>
+									<td><div class="no noind">4</div></td>
+									<td>Brodelius M, Lundgren A, Mercke P, et al. Fusion of farnesyldiphosphate synthase and epi- aristolochene synthase, a sesquiterpene cyclase involved in capsidiol biosynthesis in Nicotiana tabacum. Eur J Biochem, 2002, 269(14): 3570−3577. </td>
+								</tr>
+								<tr>
+									<td><div class="no noind">5</div></td>
+									<td>Tokuhiro K, Muramatsu M, Ohto C, et al. Overproduction of geranylgeraniol by metabolically engineered Saccharomyces cerevisiae. Appl Environ Microbiol, 2009, 75(17): 5536−5543. </td>
+								</tr>
+								<tr>
+									<td><div class="no noind">6</div></td>
+									<td>Zhou YJ, Gao W, Rong QX, et al. Modular pathway engineering of diterpenoid synthases and the mevalonic acid pathway for miltiradiene production. J Am Chem Soc, 2012, 134(6): 3234−3241. </td>
+								</tr>
+								<tr>
+									<td><div class="no noind">7</div></td>
+									<td>Albertsen L. Engineering the spatial organization of metabolic pathways: a new approach for optimization of cell factories [D]. Denmark: Technical University of Denmark, 2009.</td>
+								</tr>
+							</tbody>
+						</table>
+				</div>
 			</div>
 		</div>
 	</div>

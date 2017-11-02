@@ -7,12 +7,14 @@
 
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 		<link rel="stylesheet" type="text/css" href="css/com.css">
+		<link rel="stylesheet" type="text/css" href="css/trex.css">
 		<link rel="stylesheet" type="text/css" href="font/brandon/import.css">
 		<link rel="stylesheet" type="text/css" href="font/veneer/import.css">
 
 		<script src="js/jquery.js"></script>
 		<script src="js/modernizr.js"></script>
 		<script src="js/vcent.js"></script>
+		<script src="js/trex.js"></script>
 
 		<!-- porbably need to change these to static files -->
 		<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
@@ -92,6 +94,15 @@
 			// alert(Modernizr.csstransforms3d);
 			// if (Modernizr.csstransforms3d) {
 			// }
+
+			var click_count = 0;
+
+			$(".trex-go").click(function () {
+				if (++click_count >= 3) {
+					click_count = 0;
+					trex.modal({});
+				}
+			});
 
 			$(".fake-link").each(function (i, dom) {
 				dom = $(dom);
@@ -332,7 +343,7 @@
 
 	<div class="main view">
 		<div class="main nav">
-			<a class="logo-name">Aquamade</a>
+			<a class="logo-name trex-go">Aquamade</a>
 			<span class="link-set">
 				<a href="#home" class="nav link-item home">Home</a>
 				

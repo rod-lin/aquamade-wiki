@@ -1,0 +1,20 @@
+/* T-Rex */
+
+.com-trex {
+	transition: -webkit-filter 0.8s cubic-bezier(0.65, 0.05, 0.36, 1),
+				-moz-filter 0.8s cubic-bezier(0.65, 0.05, 0.36, 1),
+				-ms-filter 0.8s cubic-bezier(0.65, 0.05, 0.36, 1),
+				-o-filter 0.8s cubic-bezier(0.65, 0.05, 0.36, 1),
+				filter 0.8s cubic-bezier(0.65, 0.05, 0.36, 1),
+				background-color 0.8s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.com-trex.inverted {
+	-webkit-filter: invert(100%);
+	-moz-filter: invert(100%);
+	-ms-filter: invert(100%);
+	-o-filter: invert(100%);
+	filter: invert(100%);
+
+	background: white;
+}

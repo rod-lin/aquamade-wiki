@@ -624,6 +624,27 @@ table.ref-table td {
 	position: absolute;
 }
 </style>
+		<style>/* T-Rex */
+
+.com-trex {
+	transition: -webkit-filter 0.8s cubic-bezier(0.65, 0.05, 0.36, 1),
+				-moz-filter 0.8s cubic-bezier(0.65, 0.05, 0.36, 1),
+				-ms-filter 0.8s cubic-bezier(0.65, 0.05, 0.36, 1),
+				-o-filter 0.8s cubic-bezier(0.65, 0.05, 0.36, 1),
+				filter 0.8s cubic-bezier(0.65, 0.05, 0.36, 1),
+				background-color 0.8s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.com-trex.inverted {
+	-webkit-filter: invert(100%);
+	-moz-filter: invert(100%);
+	-ms-filter: invert(100%);
+	-o-filter: invert(100%);
+	filter: invert(100%);
+
+	background: white;
+}
+</style>
 		<style>@charset "UTF-8";
 
 @font-face {
@@ -653,6 +674,7 @@ table.ref-table td {
 </style>
 
 		<script src='/Template:HFLS_H2Z_Hangzhou//home/rodlin/Desktop/aquamade/src/main/js?action=raw&ctype=text/javascript'></script>
+		
 		
 		
 
@@ -734,6 +756,15 @@ table.ref-table td {
 			// alert(Modernizr.csstransforms3d);
 			// if (Modernizr.csstransforms3d) {
 			// }
+
+			var click_count = 0;
+
+			$(".trex-go").click(function () {
+				if (++click_count >= 3) {
+					click_count = 0;
+					trex.modal({});
+				}
+			});
 
 			$(".fake-link").each(function (i, dom) {
 				dom = $(dom);
@@ -974,7 +1005,7 @@ table.ref-table td {
 
 	<div class="main view">
 		<div class="main nav">
-			<a class="logo-name">Aquamade</a>
+			<a class="logo-name trex-go">Aquamade</a>
 			<span class="link-set">
 				<a href='/Team:HFLS_H2Z_Hangzhou' class="nav link-item home">Home</a>
 				

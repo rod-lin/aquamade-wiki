@@ -80,9 +80,12 @@
 	<div class="page-home">
 		<div class="main-block fullscr no-pad block main-title" style="background-image: url('http://2017.igem.org/wiki/images/a/a9/T--HFLS_H2Z_Hangzhou--img_cover3.jpg');">
 			<div class="main-effect"></div>
-			<div class="vcenter" style="line-height: 1;">
-				<span>Hangzhou</span><br>
-				<span>HFLS<span class="red">&amp;</span>H2Z</span>
+			<div class="vcenter" style="line-height: 0.7;">
+				<span style="font-size: 45%; line-height: 1.3; padding-left: 0.3em;">
+					<span>Hangzhou</span>
+					<span>HFLS<span class="red">&amp;</span>H2Z</span>
+				</span><br>
+				<span>AQUAMADE</span>
 			</div>
 		</div>
 		
